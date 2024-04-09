@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:latest
+    container_name: weekmeal-postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: my_database_weekmeal
+      POSTGRES_USER: weekmeal
+      POSTGRES_PASSWORD: weekmeal
+    volumes:
+      - ./data:/var/lib/postgresql/data
