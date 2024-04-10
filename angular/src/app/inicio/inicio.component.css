@@ -1,0 +1,88 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: var(--verde-lima);
+}
+
+body {
+    font-family: sans-serif;
+    font-size: 16px;
+    color: #333;
+}
+
+.img-inicio {
+    flex: 1; /* La imagen ocupa la mitad de la pantalla */
+    object-fit: cover; /* La imagen se ajusta para cubrir todo el espacio disponible */
+    height: 100vh; /* La imagen ocupa toda la altura de la ventana */
+}
+
+.img-logo{
+    width: 35%;
+    height: 35%;
+}
+
+.right{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    flex-direction: row;
+}
+
+.botones{
+    display: flex;
+    justify-content: space-between;
+    width: 55%;
+    margin-top: 5%;
+}
+
+.h1-inicio{
+    font-size: 4em;
+}
+
+.descripcion{
+    width: 60%;
+    margin-top: 50px;
+    font-size: 1.4em;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+.login {
+    background-color: var(--verde-oscuro);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    width: 30%;
+    font-size: 1.2em;
+}
+
+.signup {
+    background-color: var(--verde-claro);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    width: 30%;
+    font-size: 1.2em;
+}
+
+.signup:hover {
+    background-color: var(--verde-oscuro);
+}
+
+.login:hover {
+    background-color: var(--verde-claro);
+}
