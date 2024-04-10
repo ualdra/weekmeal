@@ -1,0 +1,13 @@
+<header>
+    <app-navbar></app-navbar>
+</header>
+<body>
+    <div class="menu-semanal">
+        <h1>Menú Semanal</h1>
+        <div class="menu">
+            <div class="columna-semanal" *ngFor="let dia of [0, 1, 2, 3, 4, 5, 6]">
+                <app-columna-dia [diaSemana]="dia"></app-columna-dia>
+            </div>
+        </div>
+    </div>
+</body>

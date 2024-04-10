@@ -1,1 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
+
+body {
+    --verde-lima: #CCFDDE;
+    --verde-oscuro: #266630;
+    --verde-claro: #6ACC00;
+    --verde-intermedio: #417F00;
+    --marron: #98764B;
+    color: var(--verde-lima);
+}

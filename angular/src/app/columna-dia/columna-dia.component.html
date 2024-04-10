@@ -1,0 +1,14 @@
+<div *ngIf="nombreDia" class="dia">
+    <h2>{{nombreDia}}</h2>
+    <div class="columna">
+        <div class="comida" (click)="navegarMenuDia('Desayuno')">
+            <img src="assets/logo.svg" alt="Desayuno">
+        </div>
+        <div class="comida" (click)="navegarMenuDia('Comida')">
+            <img src="assets/logo.svg" alt="Comida">
+        </div>
+        <div class="comida" (click)="navegarMenuDia('Cena')">
+            <img src="assets/logo.svg" alt="Cena">
+        </div>
+    </div>
+</div>
