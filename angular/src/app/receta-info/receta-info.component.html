@@ -1,0 +1,23 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<div class="contenedor">
+    <div class="left">
+        <div class="comida">
+            <img src="assets/logo.svg" alt="Desayuno">
+        </div>
+        <h2>Nombre de la receta</h2>
+    </div>
+    <div class="right">
+        <div class="ingredientes">
+            <h3>Ingredientes</h3>
+            <p>{{texto}}</p>
+        </div>
+        <div class="receta">
+            <h3>Preparación</h3>
+            <p>{{texto}}</p>
+        </div>
+    </div>
+    <mat-icon  class="favorito-icon" (click)="toggleFavorite()">
+        <ng-container *ngIf="!favorito">favorite_border</ng-container> 
+        <ng-container *ngIf="favorito">favorite</ng-container>
+    </mat-icon>
+</div>

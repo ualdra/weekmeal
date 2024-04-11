@@ -1,0 +1,74 @@
+.contenedor {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--marron);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 95%;
+    /* box-shadow: 5px 5px 5px black; */
+}
+
+h2{
+    margin-top: 20px;
+}
+
+h3{
+    margin-top: 20px;
+}
+
+p{
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.favorito-icon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+}
+
+.left {
+    flex: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.comida {
+    width: 50%;
+    height: 50%;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.comida img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.right {
+    flex: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    text-align: justify;
+    margin-right: 50px;
+    margin-left: 20px;
+}
+
+.receta {
+    margin-top: 20px;
+}
+

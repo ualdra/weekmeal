@@ -23,8 +23,7 @@ export class ColumnaDiaComponent implements OnInit {
   }
   
   navegarMenuDia(comida: string) {
-    console.log("HOLA")
-    this.router.navigate(['/hola'], { queryParams: { comida: comida, dia: this.nombreDia } });
+    this.router.navigate(['/menudia'], { queryParams: { comida: comida, dia: 0 } });
   }
 
 }

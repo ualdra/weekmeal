@@ -12,5 +12,4 @@ import { NgFor } from '@angular/common';
 })
 export class MenuSemanalComponent {
 
-
 }
