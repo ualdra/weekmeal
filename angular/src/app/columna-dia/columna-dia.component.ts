@@ -1,11 +1,12 @@
 import { NgIf } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-columna-dia',
   standalone: true,
-  imports: [NgIf],
+  imports: [NgIf, RouterModule],
   templateUrl: './columna-dia.component.html',
   styleUrl: './columna-dia.component.css'
 })
@@ -22,8 +23,4 @@ export class ColumnaDiaComponent implements OnInit {
     }
   }
   
-  navegarMenuDia(comida: string) {
-    this.router.navigate(['/menudia'], { queryParams: { comida: comida, dia: 0 } });
-  }
-
 }
