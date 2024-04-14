@@ -1,0 +1,107 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.botones {
+    display: flex;
+    width: 80%;
+    flex-direction: row;
+    justify-content: left;
+    margin-bottom: 20px;
+    margin-top: 45px;
+}
+
+.botones button {
+    margin: 0 10px;
+}
+
+.botones button:first-child {
+    margin-left: 0;
+}
+
+.resultados {
+    display: flex;
+    width: 80%;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: var(--verde-oscuro);
+    border-radius: 5px;
+    margin-top: 30px;
+    margin-bottom: 80px;
+}
+
+.card {
+    width: 250px;
+    height: 320px;
+    border: 1px solid var(--verde-claro);
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    /* Agrega flexbox para centrar vertical y horizontalmente */
+    align-items: center;
+    /* Centra horizontalmente los elementos */
+    justify-content: center;
+    /* Centra verticalmente los elementos */
+    flex-direction: column;
+    margin: 20px;
+}
+
+.imagen {
+    width: 70%;
+    height: 70%;
+    border-radius: 5px;
+    background-color: white;
+    margin-top: 40px;
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.card-title {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    font-size: 1.2rem;
+    color: black;
+}
+
+a {
+    text-decoration: none;
+}
+
+.favoritos {
+    background-color: var(--verde-oscuro);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    width: 200px;
+    font-size: 1.2em;
+}
+
+.recomendaciones {
+    background-color: var(--verde-claro);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    width: 200px;
+    font-size: 1.2em;
+}
+
+.recomendaciones:hover {
+    background-color: var(--verde-oscuro);
+}
+
+.favoritos:hover {
+    background-color: var(--verde-claro);
+}
