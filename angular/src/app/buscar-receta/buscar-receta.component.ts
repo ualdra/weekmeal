@@ -1,11 +1,12 @@
-import { NgFor, NgForOf, NgIf } from '@angular/common';
+import { NgForOf, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { NavbarComponent } from '../navbar/navbar.component';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-buscar-receta',
   standalone: true,
-  imports: [NgForOf, NgIf, NavbarComponent],
+  imports: [NgForOf, NgIf, NavbarComponent, RouterModule],
   templateUrl: './buscar-receta.component.html',
   styleUrl: './buscar-receta.component.css'
 })
