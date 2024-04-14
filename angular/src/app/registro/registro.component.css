@@ -1,16 +1,15 @@
 .container {
+    background-color: #266630;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh; /* Esto centra verticalmente el contenido */
+    border-radius: 10px;
   }
   
   .container form {
-    width: 300px; /* Ancho del formulario */
+    width: 250px; /* Ancho del formulario */
     padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f9f9f9;
   }
   
   .container form h2 {
@@ -39,30 +38,25 @@
     border-radius: 3px;
   }
   
-  .container form button[type="submit"] {
+  .container form button {
     width: 100%;
     padding: 10px;
     background-color: #4CAF50;
     color: white;
     border: none;
-    border-radius: 3px;
+    border-radius: 5px;
     cursor: pointer;
+    margin-top: 3px;
   }
   
-  .container form button[type="submit"]:hover {
+  .container form button:hover {
     background-color: #45a049;
   }
-  .login-link {
-    text-align: center;
-    margin-top: 10px;
-  }
-  
-  .login-link a {
-    color: blue;
-    text-decoration: underline;
-  }
-  
-  .login-link a:hover {
-    color: darkblue;
+  .background {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   
