@@ -1,3 +1,4 @@
+<div class="container">
 <form [formGroup]="registroForm" (ngSubmit)="onSubmit()">
     <h2>Registro</h2>
     <div>
@@ -29,5 +30,9 @@
       <input type="file" id="foto" formControlName="foto">
     </div>
     <button type="submit" [disabled]="registroForm.invalid">Registrarse</button>
+    <div class="login-link">
+      ¿Ya tienes una cuenta? <a href="angular\src\app\login\login.component.html">Inicia sesión aquí</a>
+    </div>
   </form>
+</div>
   

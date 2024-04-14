@@ -1,0 +1,68 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Esto centra verticalmente el contenido */
+  }
+  
+  .container form {
+    width: 300px; /* Ancho del formulario */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  .container form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .container form div {
+    margin-bottom: 10px;
+  }
+  
+  .container form label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .container form input[type="text"],
+  .container form input[type="password"],
+  .container form input[type="email"],
+  .container form input[type="tel"],
+  .container form input[type="file"] {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  .container form button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  .container form button[type="submit"]:hover {
+    background-color: #45a049;
+  }
+  .login-link {
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  .login-link a {
+    color: blue;
+    text-decoration: underline;
+  }
+  
+  .login-link a:hover {
+    color: darkblue;
+  }
+  
