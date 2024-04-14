@@ -1,0 +1,22 @@
+<app-navbar></app-navbar>
+
+<div class="container"> 
+    <div class="botones">
+        <button class="recomendaciones">Recomendaciones</button>
+        <button class="favoritos">Favoritos</button>
+    </div>
+    <div class="resultados">
+
+        <div *ngFor="let i of arrayFromNumber(resultados)" class="card">
+            <div class="imagen">
+                <img src="assets/v-inicio.png" class="card-img-top" alt="...">
+            </div>
+            <h5 class="card-title">Nombre de la receta</h5>
+        </div>
+
+    </div>
+
+    <div *ngIf="resultados === 0" class="no-resultados">
+        <h1>No se encontraron resultados</h1>
+    </div>
+</div>
