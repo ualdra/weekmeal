@@ -83,7 +83,7 @@ a {
 }
 
 .favoritos {
-    background-color: var(--verde-claro);
+    background-color: var(--verde-oscuro);
     color: #fff;
     padding: 10px 20px;
     border-radius: 10px;
@@ -94,7 +94,7 @@ a {
 }
 
 .recomendaciones {
-    background-color: var(--verde-oscuro);
+    background-color: var(--verde-claro);
     color: #fff;
     padding: 10px 20px;
     border-radius: 10px;
