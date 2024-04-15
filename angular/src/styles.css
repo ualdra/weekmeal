@@ -1,1 +1,21 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+    --verde-lima: #CCFDDE;
+    --verde-oscuro: #266630;
+    --verde-claro: #6ACC00;
+    --verde-intermedio: #417F00;
+    --marron: #98764B;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+}
+
+body{
+    font-family: sans-serif;
+    font-size: 16px;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--verde-lima);
+}
