@@ -1,3 +1,4 @@
+/* Estilos para el contenedor de los botones */
 .button-container {
     position: relative;
     display: flex;
@@ -46,10 +47,16 @@
     font-size: 20px;
   }
   
-
+  .background-image {
+    width: 100%;
+    height: calc(100vh - (altura del contenedor de botones)); /* Calcula la altura restante menos la altura del contenedor de botones */
+    object-fit: cover; /* Ajusta la imagen para que cubra todo el contenedor */
+  }
+  
   
   /* Estilos para el contenido debajo de los botones */
   div {
     margin-top: 0px;
   }
   
+
