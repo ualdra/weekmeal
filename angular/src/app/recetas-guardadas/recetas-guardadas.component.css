@@ -1,0 +1,222 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    --xoffset: 150px;
+    --yoffset: -50px;
+}
+
+
+.botones {
+    display: flex;
+    width: 80%;
+    flex-direction: row;
+    justify-content: left;
+    margin-bottom: 20px;
+    margin-top: 45px;
+}
+
+.botones button {
+    margin: 0 10px;
+}
+
+.botones button:first-child {
+    margin-left: 0;
+}
+
+.resultados {
+    display: flex;
+    width: 80%;
+    height: 500px;
+    flex-wrap: wrap;
+    justify-content: left;
+    background-color: var(--verde-oscuro);
+    border-radius: 5px;
+    margin-top: 15px;
+    padding-bottom: 100px;
+    margin-bottom: 0px;
+}
+
+.card {
+    width: 135px;
+    height: 200px;
+    border: 1px solid var(--verde-claro);
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    /* Agrega flexbox para centrar vertical y horizontalmente */
+    align-items: center;
+    /* Centra horizontalmente los elementos */
+    justify-content: center;
+    /* Centra verticalmente los elementos */
+    flex-direction: column;
+    margin: 20px;
+    margin-bottom: 0px;
+}
+
+.imagen {
+    width: 70%;
+    height: 70%;
+    border-radius: 5px;
+    background-color: white;
+    margin-top: 40px;
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.card-title {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    font-size: 1.2rem;
+    color: black;
+}
+
+a {
+    text-decoration: none;
+}
+
+.favoritos {
+    background-color: var(--verde-claro);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    width: 200px;
+    font-size: 1.2em;
+}
+
+.recomendaciones {
+    background-color: var(--verde-oscuro);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    width: 200px;
+    font-size: 1.2em;
+}
+
+
+.inbetweenText {
+    position: relative;
+    display: inline-block;
+    margin: -10px;
+    
+    background-color: transparent;
+    color: white;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    transform: translate(-5px, var(--yoffset));
+}
+.buttonNext {
+    position: relative;
+    display: inline-block;
+    padding: 10px 20px;
+    padding-left: 35px;
+    
+    background-color: white;
+    color: black;
+    border: none;
+    text-align: right;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    transform: translate(var(--xoffset), var(--yoffset));
+  }
+  .buttonNext:hover {
+    background-color: grey;
+  }
+  
+  .buttonNext::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -20px;
+    width: 0;
+    height: 0;
+    border-top: 20px solid transparent;
+    border-bottom: 19.5px solid transparent;
+    border-left: 20px solid white;
+  }
+  
+  .buttonNext:hover::after {
+    border-left-color: grey;
+  }
+  .buttonNext::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0px;
+    width: 0;
+    height: 0;
+    border-top: 20px solid transparent;
+    border-bottom: 19.5px solid transparent;
+    border-left: 20px solid var(--verde-oscuro);
+  }
+
+  .buttonPrevious {
+    position: relative;
+    display: inline-block;
+    padding: 10px 20px;
+    padding-right: 35px;
+    
+    background-color: white;
+    color: black;
+    border: none;
+    text-align: right;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    transform: translate(calc(var(--xoffset) * -1), var(--yoffset));
+  }
+  .buttonPrevious:hover {
+    background-color: grey;
+  }
+  
+  .buttonPrevious::after {
+    content: "";
+    position: absolute;
+    transform: rotateY(180deg);
+    top: 0;
+    right: 0px;
+    width: 0;
+    height: 0;
+    border-top: 20px solid transparent;
+    border-bottom: 19.5px solid transparent;
+    border-left: 20px solid var(--verde-oscuro);
+  }
+  
+  
+  .buttonPrevious::before {
+    content: "";
+    position: absolute;
+    transform: rotateY(180deg);
+    top: 0;
+    left: -19.5px;
+    width: 0;
+    height: 0;
+    border-top: 20px solid transparent;
+    border-bottom: 19.5px solid transparent;
+    border-left: 20px solid white;
+  }
+  .buttonPrevious:hover::before {
+    border-left-color: grey;
+  }
+.recomendaciones:hover {
+    background-color: var(--verde-claro);
+}
+
+.favoritos:hover {
+    background-color: var(--verde-oscuro);
+}
