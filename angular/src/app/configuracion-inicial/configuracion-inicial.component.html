@@ -1,0 +1,30 @@
+<div class="contenedor">
+    <div class="configuracion">
+        <div class="list">
+            <h2>Preferencias alimentarias</h2>
+            <div class="options">
+                <div *ngFor="let elemento of preferencias">
+                    <label class="radio-custom-label">
+                        <input type="radio" name="preferencia" [value]="elemento.nombre"
+                            [(ngModel)]="preferenciaSeleccionada" (click)="onSelectionChange(elemento)"
+                            class="radio-custom">
+                        {{ elemento.nombre }}
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="list">
+            <h2>Alergias</h2>
+            <div class="options">
+                <div *ngFor="let elemento of alergias">
+                    <label class="checkbox-custom-label">
+                        <input type="checkbox" [(ngModel)]="elemento.seleccionado"
+                            (change)="onSelectionChange(elemento)" class="checkbox-custom">
+                        {{ elemento.nombre }}
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button class="boton" [disabled]="!hasSelection()">Continuar</button>
+</div>
