@@ -6,6 +6,7 @@ import { RecetaDetalleComponent } from './receta-detalle/receta-detalle.componen
 import { BuscarRecetaComponent } from './buscar-receta/buscar-receta.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { PerfilDatosPersonalesComponent } from './perfil-datos-personales/perfil-datos-personales.component';
+import { PerfilDatosAlimenticiosComponent } from './perfil-datos-alimenticios/perfil-datos-alimenticios.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/inicio', pathMatch: 'full' },
@@ -17,6 +18,7 @@ export const routes: Routes = [
     //ayoub
     {path: 'perfil', component: PerfilComponent},
     {path: 'perfil/datos', component: PerfilDatosPersonalesComponent},
+    {path: 'perfil/preferencias', component: PerfilDatosAlimenticiosComponent},
 
     //
 ];
