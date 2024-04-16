@@ -1,0 +1,39 @@
+<div class="background" style="background-color: #CCFDDE;">
+<div class="container">
+<form [formGroup]="registroForm" (ngSubmit)="onSubmit()">
+    <h2>Registro</h2>
+    <div>
+      <label for="nombreCompleto">Nombre completo:</label>
+      <input type="text" id="nombreCompleto" formControlName="nombreCompleto">
+    </div>
+    <div>
+      <label for="apellidos">Apellidos:</label>
+      <input type="text" id="apellidos" formControlName="apellidos">
+    </div>
+    <div>
+      <label for="email">Email:</label>
+      <input type="email" id="email" formControlName="email">
+    </div>
+    <div>
+      <label for="telefono">Teléfono:</label>
+      <input type="tel" id="telefono" formControlName="telefono">
+    </div>
+    <div>
+      <label for="usuario">Nombre de usuario:</label>
+      <input type="text" id="usuario" formControlName="usuario">
+    </div>
+    <div>
+      <label for="contrasena">Contraseña:</label>
+      <input type="password" id="contrasena" formControlName="contrasena">
+    </div>
+    <div>
+      <label for="foto">Foto:</label>
+      <input type="file" id="foto" formControlName="foto">
+    </div>
+    <button type="submit" [disabled]="registroForm.invalid">Registrarse</button>
+    <div>
+      <button  routerLink="/login">!Ya tengo cuenta¡</button>
+    </div>
+  </form>
+</div>
+</div>  

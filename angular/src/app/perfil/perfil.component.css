@@ -1,0 +1,65 @@
+/* Estilos para el contenedor de los botones */
+.button-container {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #266630; /* Color de fondo deseado */
+    width: 100%;
+    padding: 12px;
+    border-bottom: 5px solid white; /* Borde blanco de 2px de grosor en la parte inferior */
+    transition: transform 0.3s, box-shadow 0.3s; /* Agregamos una transición suave */
+  }
+
+.profile-button:hover {
+  transform: scale(1.1); /* Hacemos el botón 10% más grande al pasar el ratón */
+  box-shadow: 0 0 10px rgba(18, 75, 4, 0.3);
+}
+.button-container::before {
+    content: ''; 
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    width: 10px; 
+    height: 10px; 
+    border-radius: 50%; 
+    background-color: white; 
+    transform: translate(-50%, -50%); 
+  }
+
+.button-container::after {
+    content: ''; /* Añade el contenido necesario para que funcione el pseudo-elemento */
+    position: absolute; /* Establece posición absoluta para que el pseudo-elemento no afecte al flujo normal del contenido */
+    top: 65%; /* Posiciona el pseudo-elemento en la parte superior del contenedor */
+    bottom: 0; /* Establece la altura del pseudo-elemento igual a la altura del contenedor */
+    left: 50%; /* Posiciona el pseudo-elemento en el centro horizontal del contenedor */
+    width: 5px; /* Ancho de la línea vertical */
+    background-color: white; /* Color de la línea */
+    transform: translateX(-50%); /* Centra la línea vertical */
+  }
+  
+  
+  .profile-button {
+    width: 47%;
+    padding: 15px;
+    border: none;
+    background-color: #266630; /* Color de fondo deseado */
+    color: white; /* Texto blanco */
+    font-weight: bold; /* Fuente negrita */
+    cursor: pointer;
+    font-size: 20px;
+  }
+  
+  .background-image {
+    width: 100%;
+    height: calc(100vh - (altura del contenedor de botones)); /* Calcula la altura restante menos la altura del contenedor de botones */
+    object-fit: cover; /* Ajusta la imagen para que cubra todo el contenedor */
+  }
+  
+  
+  /* Estilos para el contenido debajo de los botones */
+  div {
+    margin-top: 0px;
+  }
+  
+
