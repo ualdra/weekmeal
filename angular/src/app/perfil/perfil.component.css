@@ -8,9 +8,13 @@
     width: 100%;
     padding: 12px;
     border-bottom: 5px solid white; /* Borde blanco de 2px de grosor en la parte inferior */
+    transition: transform 0.3s, box-shadow 0.3s; /* Agregamos una transición suave */
+  }
 
+.profile-button:hover {
+  transform: scale(1.1); /* Hacemos el botón 10% más grande al pasar el ratón */
+  box-shadow: 0 0 10px rgba(18, 75, 4, 0.3);
 }
-
 .button-container::before {
     content: ''; 
     position: absolute; 
@@ -36,13 +40,12 @@
   
   
   .profile-button {
-    width: 48%;
+    width: 47%;
     padding: 15px;
     border: none;
     background-color: #266630; /* Color de fondo deseado */
     color: white; /* Texto blanco */
     font-weight: bold; /* Fuente negrita */
-    border-radius: 20px; /* Bordes redondeados */
     cursor: pointer;
     font-size: 20px;
   }

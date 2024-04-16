@@ -2,13 +2,15 @@ import { Component } from '@angular/core';
 import { PerfilComponent } from "../perfil/perfil.component";
 import { NavbarComponent } from "../navbar/navbar.component";
 import { FormsModule } from '@angular/forms'; // Importa FormsModule
+import { RouterModule } from '@angular/router';
+
 
 @Component({
     selector: 'app-perfil-datos-personales',
     standalone: true,
     templateUrl: './perfil-datos-personales.component.html',
     styleUrl: './perfil-datos-personales.component.css',
-    imports: [PerfilComponent, NavbarComponent, FormsModule]
+    imports: [PerfilComponent, NavbarComponent, FormsModule, RouterModule]
 })
 export class PerfilDatosPersonalesComponent {
     nombre: string = '';

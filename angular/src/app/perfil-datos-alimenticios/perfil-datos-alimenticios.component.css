@@ -2,12 +2,20 @@
 .button-container {
     position: relative;
     display: flex;
+
     justify-content: space-between;
     align-items: center;
     background-color: #266630; /* Color de fondo deseado */
     width: 100%;
     padding: 12px;
     border-bottom: 5px solid white; /* Borde blanco de 2px de grosor en la parte inferior */
+    transition: transform 0.3s, box-shadow 0.3s; /* Agregamos una transición suave */
+
+}
+
+.profile-button:hover {
+  transform: scale(1.1); /* Hacemos el botón 10% más grande al pasar el ratón */
+  box-shadow: 0 0 10px rgba(18, 75, 4, 0.3);
 }
 
 .button-container::before {
@@ -35,7 +43,7 @@
   
   
   .profile-button {
-    width: 48%;
+    width: 46%;
     padding: 15px;
     border: none;
     background-color: #266630; /* Color de fondo deseado */
@@ -47,8 +55,9 @@
   }
   
   .profile-button:hover {
-    background-color: #37801b; /* Cambia el color de fondo al pasar el ratón por encima */
+    background-color: transparent; 
   }
+  
 
   .background-image {
     width: 100%;
@@ -134,9 +143,9 @@
     transition: background-color 0.3s;
   }
   
-  .file-upload-btn:hover {
+  /*.file-upload-btn:hover {
     background-color: #8af75f;
-  }
+  }*/
   
   .form-column {
     flex: 1;

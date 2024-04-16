@@ -8,6 +8,13 @@
     width: 100%;
     padding: 12px;
     border-bottom: 5px solid white; /* Borde blanco de 2px de grosor en la parte inferior */
+    transition: transform 0.3s, box-shadow 0.3s; /* Agregamos una transición suave */
+
+}
+
+.profile-button:hover {
+  transform: scale(1.1); /* Hacemos el botón 10% más grande al pasar el ratón */
+  box-shadow: 0 0 10px rgba(18, 75, 4, 0.3);
 }
 
 .button-container::before {
@@ -35,7 +42,7 @@
   
   
   .profile-button {
-    width: 48%;
+    width: 45%;
     padding: 15px;
     border: none;
     background-color: #266630; /* Color de fondo deseado */
@@ -47,7 +54,7 @@
   }
   
   .profile-button:hover {
-    background-color: #37801b; /* Cambia el color de fondo al pasar el ratón por encima */
+    background-color: transparent; /* Cambia el color de fondo al pasar el ratón por encima */
   }
 
   .background-image {
@@ -72,7 +79,7 @@
   .profile-container {
     position: relative;
     width: 100%;
-    height: 100vh;
+    height: 75vh;
     display: flex;
     justify-content: center;
     align-items: center;
