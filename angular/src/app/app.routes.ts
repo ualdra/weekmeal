@@ -5,6 +5,7 @@ import { MenuDiaComponent } from './menu-dia/menu-dia.component';
 import { RecetaDetalleComponent } from './receta-detalle/receta-detalle.component';
 import { BuscarRecetaComponent } from './buscar-receta/buscar-receta.component';
 import { RecetasGuardadasComponent } from './recetas-guardadas/recetas-guardadas.component';
+import { VistaInicialComponent } from './vista-inicial/vista-inicial.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/inicio', pathMatch: 'full' },
@@ -14,5 +15,5 @@ export const routes: Routes = [
     { path: 'receta-detalle', component: RecetaDetalleComponent },
     { path: 'buscar-receta', component: BuscarRecetaComponent },
     { path: 'recetas-guardadas', component: RecetasGuardadasComponent },
-
+    { path: 'vista-inicial', component: VistaInicialComponent},
 ];
