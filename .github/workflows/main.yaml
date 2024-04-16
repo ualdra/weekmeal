@@ -1,12 +1,1 @@
-name: main
 
-on:
-  push:
-    branches:
-      - 'main'
-
-jobs:
-  build:
-    name: Build and Test
-    runs-on: ubuntu-latest
-      
