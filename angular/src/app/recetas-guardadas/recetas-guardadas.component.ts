@@ -11,16 +11,28 @@ import { RouterModule } from '@angular/router';
   styleUrl: './recetas-guardadas.component.css'
 })
 export class RecetasGuardadasComponent {
-  resultados: number = 30;
+  resultados: number = 15;
   pag: number = 0;
   maxPag: number = 0;
 
   ngOnInit(): void {
-    this.maxPag = Math.floor(this.resultados/this.resultadosMaxPg);
+    this.maxPag = Math.floor((this.resultados-1)/this.resultadosMaxPg);
   }
 
   resultadosMaxPg: number = 14;
   
+  nextPage(): void {
+    if(this.pag+1 <= this.maxPag){
+      this.pag += 1;
+    }
+  }
+  previousPage(): void {
+    if(this.pag-1 >= 0){
+      this.pag -= 1;
+    }
+  }
+
+
   paginaResultado(): any[] { //Adaptar cuándo haya API
     var num: number = this.resultados - this.pag*this.resultadosMaxPg 
     if(num > this.resultadosMaxPg){

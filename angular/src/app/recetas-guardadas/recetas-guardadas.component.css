@@ -28,13 +28,13 @@
 .resultados {
     display: flex;
     width: 80%;
-    height: 500px;
+    height: 520px;
     flex-wrap: wrap;
-    justify-content: left;
+    justify-content: center;
     background-color: var(--verde-oscuro);
     border-radius: 5px;
     margin-top: 15px;
-    padding-bottom: 100px;
+    padding-bottom: 30%;
     margin-bottom: 0px;
 }
 
@@ -214,7 +214,7 @@ a {
     border-left-color: grey;
   }
 .recomendaciones:hover {
-    background-color: var(--verde-claro);
+    background-color: var(--verde-oscuro);
 }
 
 .favoritos:hover {
