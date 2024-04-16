@@ -16,7 +16,6 @@ export const routes: Routes = [
     { path: 'receta-detalle', component: RecetaDetalleComponent },
     { path: 'buscar-receta', component: BuscarRecetaComponent },
     //ayoub
-    {path: 'perfil', component: PerfilComponent},
     {path: 'perfil/datos', component: PerfilDatosPersonalesComponent},
     {path: 'perfil/preferencias', component: PerfilDatosAlimenticiosComponent},
 
