@@ -30,7 +30,7 @@
       <label for="foto">Foto:</label>
       <input type="file" id="foto" formControlName="foto">
     </div>
-    <button type="submit" [disabled]="registroForm.invalid">Registrarse</button>
+    <button type="submit" [disabled]="registroForm.invalid" routerLink="/vista-inicial">Registrarse</button>
     <div>
       <button  routerLink="/login">!Ya tengo cuenta¡</button>
     </div>

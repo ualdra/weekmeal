@@ -19,7 +19,7 @@
         <div class="contrasena-requerida" *ngIf="loginForm.controls['contrasena']?.errors?.['required']">La contraseña es requerida.</div>
       </div>
     </div>
-    <button type="submit" [disabled]="loginForm.invalid">Iniciar sesión</button>
+    <button type="submit" [disabled]="loginForm.invalid" routerLink="/vista-inicial">Iniciar sesión</button>
     <button type="button" (click)="navigateToRegistro()"  routerLink="/signup">Registrarse</button>
   </form>
 </div>
