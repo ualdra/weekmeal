@@ -22,7 +22,7 @@ public class Usuario {
     @NotBlank
     private String foto;
     @NotBlank
-    private String username;
+    private String user;
     @NotBlank
     private String password;
     @NotBlank
