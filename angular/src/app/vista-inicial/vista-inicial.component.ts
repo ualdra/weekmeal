@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { NgClass } from '@angular/common';
 import { NavbarComponent } from '../navbar/navbar.component';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-vista-inicial',
   standalone: true,
-  imports: [NgClass, NavbarComponent],
+  imports: [NgClass, NavbarComponent, RouterModule],
   templateUrl: './vista-inicial.component.html',
   styleUrl: './vista-inicial.component.css'
 })
