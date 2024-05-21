@@ -1,4 +1,4 @@
-package com.weekmeal.api.controller;
+package com.example.weekmeal_sb.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

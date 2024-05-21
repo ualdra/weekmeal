@@ -1,4 +1,4 @@
-package com.weekmeal.api.service;
+package com.example.weekmeal_sb.services;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -33,16 +33,4 @@ public class ExternalApiService {
             throw new RuntimeException("Error al construir la URI", e);
         }
     }
-
-    public String getRecipe(String query) { // Añade el parámetro de consulta necesario
-        try {
-            String endpoint = "/recipes/" + query;
-            String queryParams = "/information?apiKey=" + apiKey + "&includeNutrition=true" ;
-            URI uri = new URI(apiBaseUrl + endpoint + queryParams);
-            return restTemplate.getForObject(uri, String.class);
-        } catch (URISyntaxException e) {
-            throw new RuntimeException("Error al construir la URI", e);
-        }
-    }
-
 }

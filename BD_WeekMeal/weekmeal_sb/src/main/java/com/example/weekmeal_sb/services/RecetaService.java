@@ -31,4 +31,8 @@ public class RecetaService {
     public void deleteReceta(long id) {
         recetaRepository.deleteById(id);
     }
+
+
+
+    
 }
