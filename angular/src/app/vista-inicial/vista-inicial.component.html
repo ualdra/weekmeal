@@ -5,14 +5,14 @@
       (mouseenter)="mostrarImagen1()">
       <!-- Imagen de la izquierda -->
       <img src="/assets/imagen1.jpg" alt="Imagen 1">
-      <button>Planifica la comida de tu semana</button>
+      <button routerLink="/menu-semanal">Planifica la comida de tu semana</button>
     </div>
     <div class="imagen"
       [ngClass]="{'activo': imagenActiva === 'imagen2'}"
       (mouseenter)="mostrarImagen2()">
       <!-- Imagen de la derecha -->
       <img src="/assets/imagen2.jpg" alt="Imagen 2">
-      <button>Recetas guardadas</button>
+      <button routerLink="/recetas-guardadas">Recetas guardadas</button>
     </div>
   </div>
 
