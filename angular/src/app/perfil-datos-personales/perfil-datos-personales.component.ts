@@ -36,4 +36,6 @@ export class PerfilDatosPersonalesComponent {
         // Aquí puedes agregar lógica para mostrar la vista previa de la imagen si es necesario
       }
     }
+
+    
 }

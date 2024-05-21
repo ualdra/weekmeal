@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.example.weekmeal_sb.entity.Usuario;
 import com.example.weekmeal_sb.services.UsuarioService;
-import java.util.Collections;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -30,6 +29,11 @@ public class UsuarioController {
     @PostMapping
     public Usuario createUser(@RequestBody Usuario user) {
         return usuarioService.saveUser(user);
+    }
+
+    @PutMapping("/{idUsuario}")
+    public Usuario updateUser(@PathVariable long idUsuario, @RequestBody Usuario userDetails) {
+        return usuarioService.updateUser(idUsuario, userDetails);
     }
 
     @DeleteMapping("/{idUsuario}")
