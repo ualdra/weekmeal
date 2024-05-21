@@ -1,28 +1,34 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <div class="contenedor">
-    <div class="left">
-        <div class="comida">
-            <img [src]="receta?.image" alt="{{ receta?.title }}">
-        </div>
-        <h2>{{receta?.title}}</h2>
+  <div class="left">
+    <div class="comida">
+      <img [src]="receta?.image" alt="{{ receta?.title }}">
     </div>
-    <div class="right">
-        <div class="ingredientes">
-            <h3>Ingredientes</h3>
-            <ul>
-                <li *ngFor="let ingrediente of receta?.extendedIngredients">
-                    <!-- <img [src]="'https://spoonacular.com/cdn/ingredients_100x100/' + ingrediente.image" alt="{{ ingrediente.name }}"> -->
-                    <span>{{ ingrediente.name }}</span>
-                </li>
-            </ul>
-        </div>
-        <div class="receta">
-            <h3>Preparación</h3>
-            <p>{{texto}}</p>
-        </div>
+    <h2>{{ receta?.title }}</h2>
+  </div>
+  <div class="right">
+    <div class="ingredientes">
+      <h3>Ingredientes</h3>
+      <ul>
+        <li *ngFor="let ingrediente of receta?.extendedIngredients">
+          <span>{{ ingrediente.name }}</span>
+        </li>
+      </ul>
     </div>
-    <mat-icon  class="favorito-icon" (click)="toggleFavorite()">
-        <ng-container *ngIf="!favorito">favorite_border</ng-container> 
-        <ng-container *ngIf="favorito">favorite</ng-container>
-    </mat-icon>
+    <div class="receta">
+      <h3>Preparación</h3>
+      <ng-container *ngIf="receta?.analyzedInstructions">
+        <ul *ngFor="let instruction of receta?.analyzedInstructions">
+          <li style="list-style: none" *ngFor="let step of instruction?.steps">
+            <span>{{ step.number }}. {{ step.step }}</span>
+          </li>
+        </ul>
+      </ng-container>
+      <p *ngIf="!receta?.analyzedInstructions">No hay instrucciones de preparación disponibles.</p>
+    </div>
+  </div>
+  <mat-icon class="favorito-icon" (click)="toggleFavorite()">
+    <ng-container *ngIf="!favorito">favorite_border</ng-container>
+    <ng-container *ngIf="favorito">favorite</ng-container>
+  </mat-icon>
 </div>

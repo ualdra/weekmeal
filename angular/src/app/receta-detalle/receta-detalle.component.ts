@@ -14,18 +14,25 @@ import { Receta } from '../interfaces/receta';
 })
 
 export class RecetaDetalleComponent implements OnInit {
-
-  recetaId: number | undefined;
-
+  receta: Receta | undefined;
 
   constructor(
     private route: ActivatedRoute,
+    private recetaService: RecetaService
   ) { }
 
   ngOnInit(): void {
-    this.recetaId = Number(this.route.snapshot.paramMap.get('id'));
+    this.getReceta();
   }
 
-
+  getReceta(): void {
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+    this.recetaService.getReceta(id)
+      .subscribe(receta => {
+        console.log("receta", receta);
+        this.receta = receta;
+      }
+      );
+  }
 
 }
