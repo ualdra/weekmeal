@@ -1,4 +1,4 @@
-package com.example.weekmeal_sb;
+package com.example.weekmeal_sb.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
