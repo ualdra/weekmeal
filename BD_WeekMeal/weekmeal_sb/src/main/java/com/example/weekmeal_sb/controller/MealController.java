@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.weekmeal_sb.services.ExternalApiService;
 
+
 import org.springframework.web.bind.annotation.RequestParam;
 
 
@@ -26,3 +27,4 @@ public class MealController {
         return ResponseEntity.ok(weeklyMenu);
     }
 }
+
