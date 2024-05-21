@@ -3,6 +3,7 @@ package com.example.weekmeal_sb.entity;
 import java.util.List;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,15 +18,15 @@ public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idUsuario;
+    public Long idUsuario;
 
-    @NotBlank
     private String foto;
     @NotBlank
-    private String user;
+    private String username;
     @NotBlank
     private String password;
     @NotBlank
+    @Email
     private String email;
     @NotBlank
     private String telefono;

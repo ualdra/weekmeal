@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+
 import com.example.weekmeal_sb.entity.Tolerancia;
 import com.example.weekmeal_sb.services.ToleranciaService;
 
