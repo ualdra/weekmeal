@@ -6,33 +6,34 @@
     <button class="profile-button" [routerLink]="['/perfil/preferencias']">Preferencias Alimenticias</button>
   </div>
 
-  
   <div class="profile-container">
     <img class="background-image" src="/assets/fondo-perfil.svg" alt="Fondo del perfil">
-    <form (submit)="guardarCambios()">
-      <div class="file-upload-container">
-        <input type="file" id="fotoPerfil" name="fotoPerfil" (change)="cargarFoto($event)">
-        <div class="avatar-container" [style.background-image]="'url(' + imagenSeleccionada + ')'"></div>
-        <label for="fotoPerfil" class="file-upload-btn">Seleccionar archivo</label>
+    <form (ngSubmit)="guardarCambios()">
 
-      </div>
       <div class="form-column">
         <label for="nombre">Nombre</label>
-        <input type="text" id="nombre" name="nombre" [(ngModel)]="nombre">
-  
+        <input type="text" id="nombre" name="nombre" [(ngModel)]="user.nombre" required>
+
         <label for="apellidos">Apellidos</label>
-        <input type="text" id="apellidos" name="apellidos" [(ngModel)]="apellidos">
-  
+        <input type="text" id="apellidos" name="apellidos" [(ngModel)]="user.apellidos" required>
+
         <label for="usuario">Usuario</label>
-        <input type="text" id="usuario" name="usuario" [(ngModel)]="usuario">
-  
+        <input type="text" id="usuario" name="usuario" [(ngModel)]="user.username" required>
+
+        <label for="email">Email</label>
+        <input type="text" id="email" name="email" [(ngModel)]="user.email" required>
+
+        <label for="email">Telefono</label>
+        <input type="text" id="telefono" name="telefono" [(ngModel)]="user.telefono" required>
+
         <label for="contraseña">Contraseña</label>
-        <input type="password" id="contraseña" name="contraseña" [(ngModel)]="contrasena">
-  
-        <label for="confirmar contraseña">Confirmar contraseña</label>
-        <input type="password" id="contraseña" name="contraseña" [(ngModel)]="contrasena">
+        <input type="password" id="contraseña" name="contraseña" [(ngModel)]="user.password" required>
+
+        <label for="confirmar_contraseña">Confirmar contraseña</label>
+        <input type="password" id="confirmar_contraseña" name="confirmar_contraseña" [(ngModel)]="user.password" required>
 
         <button type="submit">Guardar Cambios</button>
       </div>
     </form>
   </div>
+</div>

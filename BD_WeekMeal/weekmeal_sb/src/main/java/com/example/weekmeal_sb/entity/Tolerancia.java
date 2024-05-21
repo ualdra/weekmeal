@@ -32,4 +32,8 @@ public class Tolerancia {
     private boolean ketogenic;
     @NotNull
     private boolean cheap;
+
+    @OneToOne
+    @JoinColumn(name = "idUsuario")
+    private Usuario usuario;
 }
