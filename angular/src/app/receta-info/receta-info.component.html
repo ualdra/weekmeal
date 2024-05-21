@@ -2,14 +2,19 @@
 <div class="contenedor">
     <div class="left">
         <div class="comida">
-            <img src="assets/logo.svg" alt="Desayuno">
+            <img [src]="receta?.image" alt="{{ receta?.title }}">
         </div>
-        <h2>Nombre de la receta</h2>
+        <h2>{{receta?.title}}</h2>
     </div>
     <div class="right">
         <div class="ingredientes">
             <h3>Ingredientes</h3>
-            <p>{{texto}}</p>
+            <ul>
+                <li *ngFor="let ingrediente of receta?.extendedIngredients">
+                    <!-- <img [src]="'https://spoonacular.com/cdn/ingredients_100x100/' + ingrediente.image" alt="{{ ingrediente.name }}"> -->
+                    <span>{{ ingrediente.name }}</span>
+                </li>
+            </ul>
         </div>
         <div class="receta">
             <h3>Preparación</h3>

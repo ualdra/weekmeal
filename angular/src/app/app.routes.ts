@@ -19,7 +19,7 @@ export const routes: Routes = [
     { path: 'inicio', component: InicioComponent },
     { path: 'menu-semanal', component: MenuSemanalComponent},
     { path: 'menu-dia/:dia/:comida', component: MenuDiaComponent },
-    { path: 'receta-detalle', component: RecetaDetalleComponent },
+    { path: 'receta-detalle/:id', component: RecetaDetalleComponent },
     { path: 'buscar-receta', component: BuscarRecetaComponent },
     { path: 'recetas-guardadas', component: RecetasGuardadasComponent },
     { path: 'login', component: LoginComponent },
