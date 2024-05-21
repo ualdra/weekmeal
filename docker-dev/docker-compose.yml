@@ -18,4 +18,4 @@ services:
       dockerfile: ../angular/Dockerfile.dev
     container_name: angular
     ports:
-      - "4400:4200"
+      - "4200:4200"
