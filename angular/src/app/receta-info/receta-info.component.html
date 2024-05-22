@@ -2,7 +2,7 @@
 <div class="contenedor">
   <div class="left">
     <div class="comida">
-      <img [src]="receta?.image" alt="{{ receta?.title }}">
+      <img [src]="receta?.image" alt="{{ receta?.title }}" (load)="onImageLoad($event)">
     </div>
     <h2>{{ receta?.title }}</h2>
   </div>
