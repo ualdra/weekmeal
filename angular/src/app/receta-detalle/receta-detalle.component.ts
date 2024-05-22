@@ -29,7 +29,6 @@ export class RecetaDetalleComponent implements OnInit {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.recetaService.getReceta(id)
       .subscribe(receta => {
-        console.log("receta", receta);
         this.receta = receta;
       }
       );

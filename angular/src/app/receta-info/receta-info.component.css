@@ -41,9 +41,9 @@ p{
 }
 
 .comida {
-    width: 50%;
-    height: 50%;
-    background-color: white;
+    width: 15rem;
+    height: 15rem;
+    background-color: var(--marron);
     border-radius: 10px;
     display: flex;
     justify-content: center;
@@ -55,6 +55,16 @@ p{
     height: 100%;
     object-fit: cover;
     border-radius: 10px;
+    opacity: 0; /* Ocultar la imagen inicialmente */
+    transition: opacity 0.3s ease; /* Transición suave para mostrar la imagen */
+}
+
+.comida img.loaded {
+    opacity: 1; /* Mostrar la imagen cuando esté cargada */
+}
+
+.comida.loaded {
+    background-color: transparent; /* Quitar el fondo marrón cuando la imagen esté cargada */
 }
 
 .right {
