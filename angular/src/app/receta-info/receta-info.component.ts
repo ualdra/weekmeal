@@ -1,7 +1,6 @@
 import { NgFor, NgIf } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
-import { RecetaService } from '../services/receta.service';
 import { Receta, Ingrediente, Instruction } from '../interfaces/receta';
 
 @Component({
@@ -11,20 +10,20 @@ import { Receta, Ingrediente, Instruction } from '../interfaces/receta';
   templateUrl: './receta-info.component.html',
   styleUrls: ['./receta-info.component.css']
 })
-export class RecetaInfoComponent implements OnInit {
+export class RecetaInfoComponent {
 
   favorito: boolean = false;
   @Input() receta: Receta | undefined;
 
-  constructor(private recetaService: RecetaService) { }
-
-  ngOnInit(): void {
-    console.log("receta", this.receta);
-    console.log("receta", this.receta?.analyzedInstructions);
-    console.log("receta", this.receta?.analyzedInstructions[0].steps);
-  }
+  constructor() { }
 
   toggleFavorite() {
     this.favorito = !this.favorito;
   }
+
+  onImageLoad(event: Event) {
+    const imgElement = event.target as HTMLImageElement;
+    imgElement.classList.add('loaded');
+  }
+
 }
