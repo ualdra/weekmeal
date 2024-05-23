@@ -30,6 +30,8 @@ services:
       context: ../angular
       dockerfile: ../angular/Dockerfile.dev
     container_name: angular
+    volumes:
+     - ../angular:/app
     ports:
      - "4200:4200"
     networks:
