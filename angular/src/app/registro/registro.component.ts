@@ -1,6 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { User } from '../user';
 
 @Component({
   selector: 'app-registro',
@@ -10,25 +12,35 @@ import { RouterModule } from '@angular/router';
   styleUrl: './registro.component.css'
 })
 export class RegistroComponent {
+  registerForm: FormGroup;
+  showModal: boolean = false;
+  registrationError: string | null = null;
 
-
-  registroForm: FormGroup;
-  constructor(private formBuilder: FormBuilder) {
-    this.registroForm = this.formBuilder.group({
-      nombreCompleto: ['', Validators.required],
-      apellidos: ['', Validators.required],
+  constructor(private http: HttpClient, private fb: FormBuilder) {
+    this.registerForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      telefono: ['', Validators.required],
-      usuario: ['', Validators.required],
-      contrasena: ['', [Validators.required, Validators.minLength(6)]],
-      foto: ['']
+      username: ['', [Validators.required, Validators.minLength(4)]],
+      password: ['', [Validators.required, Validators.minLength(6)]]
     });
   }
 
   onSubmit() {
-    if (this.registroForm.valid) {
-      // Aquí puedes manejar el envío de datos del formulario
-      console.log('Datos del formulario:', this.registroForm.value);
-    }
+    const url = 'http://localhost:8080/api/usuarios/register';
+    const user: User = this.registerForm.value;
+
+    this.http.post(url, user).subscribe({
+      next: (response: any) => {
+        console.log('Registro exitoso', response);
+        this.showModal = true;
+        this.registrationError = null;
+      },
+      error: (error: any) => {
+        console.error('Error en el registro', error);
+        this.registrationError = error.error.message;
+      }
+    });
   }
-}
+
+  closeModal() {
+    this.showModal = false;
+  }}

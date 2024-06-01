@@ -1,7 +1,9 @@
 import { CommonModule } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 import { Component, NgModule } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router, RouterModule } from '@angular/router';
+import { AuthService } from '../auth-service.service';
 
 @Component({
   selector: 'app-login',
@@ -11,27 +13,44 @@ import { RouterModule } from '@angular/router';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-navigateToRegistro() {
-throw new Error('Method not implemented.');
-}
-togglePasswordVisibility() {
-    this.showPassword = !this.showPassword;
-  }
-
   loginForm: FormGroup;
- showPassword: boolean = false;
+  showPassword: boolean = false;
+  loginError: string | null = null;
 
-  constructor(private formBuilder: FormBuilder) {
-    this.loginForm = this.formBuilder.group({
-      usuario: ['', Validators.required],
-      contrasena: ['', Validators.required]
+  constructor(
+    private http: HttpClient, 
+    private router: Router, 
+    private authService: AuthService
+  ) {
+    this.loginForm = new FormGroup({
+      username: new FormControl('', Validators.required),
+      password: new FormControl('', Validators.required)
     });
   }
 
+  navigateToRegistro() {
+    throw new Error('Method not implemented.');
+  }
+
+  togglePasswordVisibility() {
+    this.showPassword = !this.showPassword;
+  }
+
   onSubmit() {
-    if (this.loginForm.valid) {
-      // Aquí puedes manejar el envío de datos del formulario, por ejemplo, puedes enviarlos a través de un servicio de autenticación.
-      console.log('Datos del formulario:', this.loginForm.value);
-    }
+    const url = 'http://localhost:8080/api/usuarios/login';
+    const credentials = this.loginForm.value;
+
+    this.http.post(url, credentials).subscribe({
+      next: (response: any) => {
+        console.log('Inicio de sesión exitoso', response);
+        this.authService.setId(response.id); // Guardar ID en AuthService
+        this.authService.setUsername(response.username); // Guardar nombre de usuario en AuthService
+        this.router.navigate(['/']); // Redirigir al inicio
+      },
+      error: (error: any) => {
+        console.error('Error en el inicio de sesión', error);
+        this.loginError = error.error.message;
+      }
+    });
   }
 }
