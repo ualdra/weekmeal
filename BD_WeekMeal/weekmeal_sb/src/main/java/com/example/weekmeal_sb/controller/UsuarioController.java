@@ -4,6 +4,8 @@ import java.util.List;
 import com.example.weekmeal_sb.entity.Usuario;
 import com.example.weekmeal_sb.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -28,9 +30,15 @@ public class UsuarioController {
         return usuarioService.saveUser(user);
     }
 
+
     @PostMapping("/login")
-    public Usuario login(@RequestBody Usuario user) {
-        return usuarioService.login(user);
+    public ResponseEntity<Usuario> login(@RequestBody Usuario user) {
+        Usuario existingUser = usuarioService.login(user);
+        if (existingUser != null) {
+            return ResponseEntity.ok(existingUser);
+        } else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
     }
 
     @PutMapping("/{idUsuario}")

@@ -25,13 +25,14 @@ public class UsuarioService {
     }
 
     public Usuario updateUser(long id, Usuario userDetails) {
-        Usuario existingUser = usuarioRepository.findById(id).orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+        Usuario existingUser = usuarioRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
         existingUser.setNombre(userDetails.getNombre());
         existingUser.setApellidos(userDetails.getApellidos());
         existingUser.setEmail(userDetails.getEmail());
         existingUser.setUsername(userDetails.getUsername());
         existingUser.setPassword(userDetails.getPassword());
-        existingUser.setTelefono(userDetails.getTelefono());  
+        existingUser.setTelefono(userDetails.getTelefono());
 
         return usuarioRepository.save(existingUser);
     }
@@ -45,7 +46,7 @@ public class UsuarioService {
         if (existingUser != null && existingUser.getPassword().equals(user.getPassword())) {
             return existingUser;
         } else {
-            throw new RuntimeException("Usuario o contraseña incorrectos");
+            return null;
         }
     }
 }
