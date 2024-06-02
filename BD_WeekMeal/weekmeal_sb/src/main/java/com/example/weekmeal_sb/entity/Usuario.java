@@ -20,7 +20,6 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long idUsuario;
 
-    private String foto;
     @NotBlank
     private String username;
     @NotBlank

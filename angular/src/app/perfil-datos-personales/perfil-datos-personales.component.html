@@ -12,24 +12,24 @@
 
       <div class="form-column">
         <label for="nombre">Nombre</label>
-        <input type="text" id="nombre" name="nombre" [(ngModel)]="user.nombre" required>
+        <input type="text" id="nombre" name="nombre" [(ngModel)]="currentUser!.nombre" required>
 
         <label for="apellidos">Apellidos</label>
-        <input type="text" id="apellidos" name="apellidos" [(ngModel)]="user.apellidos" required>
+        <input type="text" id="apellidos" name="apellidos" [(ngModel)]="currentUser!.apellidos" required>
 
         <label for="usuario">Usuario</label>
-        <input type="text" id="usuario" name="usuario" [(ngModel)]="user.username" required>
+        <input type="text" id="usuario" name="usuario" [(ngModel)]="currentUser!.username" required>
       </div>
 
       <div class="form-column">
         <label for="email">Email</label>
-        <input type="text" id="email" name="email" [(ngModel)]="user.email" required>
+        <input type="text" id="email" name="email" [(ngModel)]="currentUser!.email" required>
 
         <label for="telefono">Teléfono</label>
-        <input type="text" id="telefono" name="telefono" [(ngModel)]="user.telefono" required>
+        <input type="text" id="telefono" name="telefono" [(ngModel)]="currentUser!.telefono" required>
 
         <label for="contraseña">Contraseña</label>
-        <input type="password" id="contraseña" name="contraseña" [(ngModel)]="user.password" required>
+        <input type="password" id="contraseña" name="contraseña" [(ngModel)]="currentUser!.password" required>
       </div>
 
       <button type="submit">Guardar Cambios</button>

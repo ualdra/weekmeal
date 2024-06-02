@@ -1,27 +1,31 @@
 <div class="background">
-<div class = "container">
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <h2>Iniciar sesión</h2>
-    <div>
-      <label for="usuario">Usuario:</label>
-      <input type="text" id="usuario" formControlName="usuario">
-      <div *ngIf="loginForm.controls['usuario'].invalid && (loginForm.controls['usuario'].dirty || loginForm.controls['usuario'].touched)">
-        <div class ="usuario-requerido" *ngIf="loginForm.controls['usuario']?.errors?.['required']">El usuario es requerido.</div>
+  <div class="logo-container">
+    <img src="assets/logo.png" alt="App Logo" class="logo">
+  </div>
+  <div class="container">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <h2>Iniciar sesión</h2>
+      <div>
+        <label for="username">Usuario:</label>
+        <input type="text" id="username" formControlName="username">
+        <div *ngIf="loginForm.controls['username'].invalid && (loginForm.controls['username'].dirty || loginForm.controls['username'].touched)">
+          <div class="username-requerido" *ngIf="loginForm.controls['username']?.errors?.['required']">El usuario es requerido.</div>
+        </div>
       </div>
-    </div>
-    <div>
-      <label for="contrasena">Contraseña:</label>
-      <input type="{{ showPassword ? 'text' : 'password' }}" id="contrasena" formControlName="contrasena">
-      <button type="button" (click)="togglePasswordVisibility()">
-        {{ showPassword ? 'Ocultar' : 'Mostrar' }} contraseña
-      </button>
-      <div *ngIf="loginForm.controls['contrasena'].invalid && (loginForm.controls['contrasena'].dirty || loginForm.controls['contrasena'].touched)">
-        <div class="contrasena-requerida" *ngIf="loginForm.controls['contrasena']?.errors?.['required']">La contraseña es requerida.</div>
+      <div>
+        <label for="password">Contraseña:</label>
+        <input [type]="showPassword ? 'text' : 'password'" id="password" formControlName="password">
+        <button type="button" (click)="togglePasswordVisibility()" class="password-toggle">
+          {{ showPassword ? 'Ocultar' : 'Mostrar' }} contraseña
+        </button>
+        <div *ngIf="loginForm.controls['password'].invalid && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)">
+          <div class="password-requerida" *ngIf="loginForm.controls['password']?.errors?.['required']">La contraseña es requerida.</div>
+        </div>
       </div>
-    </div>
-    <button type="submit" [disabled]="loginForm.invalid" routerLink="/vista-inicial">Iniciar sesión</button>
-    <button type="button" (click)="navigateToRegistro()"  routerLink="/configuracion-inicial">Registrarse</button>
-  </form>
+      <div style="display: flex; justify-content: space-between;">
+        <button type="submit" [disabled]="loginForm.invalid">Iniciar sesión</button>
+        <button type="button" (click)="navigateToRegistro()">Registrarse</button>
+      </div>
+    </form>
+  </div>
 </div>
-</div>
-  

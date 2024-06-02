@@ -21,33 +21,26 @@ import { User } from '../user';
     ]
 })
 export class PerfilComponent {
-    user: User = {
-        idUsuario: 0,
-        username: '',
-        password: '',
-        email: '',
-        telefono: '',
-        nombre: '',
-        apellidos: ''
-      };
-      fotoPerfil: File | null = null;
-      hidePassword: boolean = true;
-      imagenSeleccionada: string = '';
-    
-      constructor(private userService: UserService) { }
-    
-      ngOnInit(): void {
-        this.loadUser();
-      }
+  currentUser: User | null = null;
+
+  constructor(private userService: UserService) { }
+
+  ngOnInit(): void {
+    this.userService.currentUser.subscribe(user => {
+      this.currentUser = user;
+      this.loadUser();
+    });
+  }
+
     
       loadUser(): void {
-        const userId = 1; // Aquí puedes obtener el ID del usuario registrado, por ejemplo, desde un servicio de autenticación
-        this.userService.getUserById(userId).subscribe(
+        const userId = this.currentUser!.idUsuario; // Aquí puedes obtener el ID del usuario registrado, por ejemplo, desde un servicio de autenticación
+        this.userService.getUserById(userId!).subscribe(
           data => {
             console.log('Datos del usuario recibidos:', data); // Verifica la respuesta de la API
-            this.user = data;
-            console.log('Usuario después de asignación:', this.user); // Verifica el usuario asignado
-            if (!this.user.idUsuario) {
+            this.currentUser = data;
+            console.log('Usuario después de asignación:', this.currentUser); // Verifica el usuario asignado
+            if (!this.currentUser.idUsuario) {
               console.error('ID de usuario no definido en los datos cargados');
             }
           },
