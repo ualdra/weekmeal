@@ -38,7 +38,9 @@ public class UsuarioService {
         existingUser.setPassword(userDetails.getPassword());
         existingUser.setFoto(userDetails.getFoto());
         existingUser.setTelefono(userDetails.getTelefono());  
-
+        existingUser.setTolerancias(userDetails.getTolerancias());
+        existingUser.setMenu(userDetails.getMenu());
+        existingUser.setRecetasFavoritas(userDetails.getRecetasFavoritas());
         return usuarioRepository.save(existingUser);
     }
     public void deleteUser(long id) {

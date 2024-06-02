@@ -20,4 +20,15 @@ public class ToleranciaService {
     public Tolerancia getToleranciaById(long id) {
         return toleranciaRepository.findById(id).orElse(null);
     }
+
+    public void updateTolerancia(long id, Tolerancia toleranciaDetails) {
+        Tolerancia existingTolerancia = toleranciaRepository.findById(id).orElseThrow(() -> new RuntimeException("Tolerancia no encontrada"));
+        existingTolerancia.setVegetarian(toleranciaDetails.isVegetarian());
+        existingTolerancia.setVegan(toleranciaDetails.isVegan());
+        existingTolerancia.setDairyFree(toleranciaDetails.isDairyFree());
+        existingTolerancia.setGlutenFree(toleranciaDetails.isGlutenFree());
+        existingTolerancia.setLowFodmap(toleranciaDetails.isLowFodmap());
+
+        toleranciaRepository.save(existingTolerancia);
+    }
 }
