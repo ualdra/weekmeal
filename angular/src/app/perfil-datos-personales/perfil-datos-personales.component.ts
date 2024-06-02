@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { PerfilComponent } from "../perfil/perfil.component";
 import { NavbarComponent } from "../navbar/navbar.component";
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
@@ -12,7 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
   standalone: true,
   templateUrl: './perfil-datos-personales.component.html',
   styleUrls: ['./perfil-datos-personales.component.css'],
-  imports: [PerfilComponent, NavbarComponent, FormsModule, RouterModule, HttpClientModule]
+  imports: [ NavbarComponent, FormsModule, RouterModule, HttpClientModule]
 })
 export class PerfilDatosPersonalesComponent implements OnInit {
   user: User = {
