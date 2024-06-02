@@ -8,70 +8,68 @@
 
   <div class="profile-container">
     <img class="background-image" src="/assets/fondo-perfil.svg" alt="Fondo del perfil">
-    <form (submit)="guardarCambios()" class="form-flex">
-      <div class="form-column">
+    <form (ngSubmit)="guardarCambios()" class="form-flex">
+      <div class="form-column" *ngIf="tolerancia">
         <div class="form-group">
           <label for="vegatariano">¿Llevas una dieta vegetariana?</label>
           <div class="toggle-button">
-            <button type="button" class="yes-button" (click)="vegatariano = true" [ngClass]="{'active': vegatariano}">Sí</button>
-            <button type="button" class="no-button" (click)="vegatariano = false" [ngClass]="{'active': !vegatariano}">No</button>
-            <i class="far" [ngClass]="{'fa-check-circle': vegatariano, 'fa-circle': !vegatariano}"></i>
+            <button type="button" class="yes-button" (click)="tolerancia.vegetarian = true" [ngClass]="{'active': tolerancia.vegetarian}">Sí</button>
+            <button type="button" class="no-button" (click)="tolerancia.vegetarian = false" [ngClass]="{'active': !tolerancia.vegetarian}">No</button>
+            <i class="far" [ngClass]="{'fa-check-circle': tolerancia.vegetarian, 'fa-circle': !tolerancia.vegetarian}"></i>
           </div>
         </div>
-  
+
         <div class="form-group">
           <label for="vegano">¿Llevas una dieta vegana?</label>
           <div class="toggle-button">
-            <button type="button" class="yes-button" (click)="vegano = true" [ngClass]="{'active': vegano}">Sí</button>
-            <button type="button" class="no-button" (click)="vegano = false" [ngClass]="{'active': !vegano}">No</button>
-            <i class="far" [ngClass]="{'fa-check-circle': vegano, 'fa-circle': !vegano}"></i>
+            <button type="button" class="yes-button" (click)="tolerancia.vegan = true" [ngClass]="{'active': tolerancia.vegan}">Sí</button>
+            <button type="button" class="no-button" (click)="tolerancia.vegan = false" [ngClass]="{'active': !tolerancia.vegan}">No</button>
+            <i class="far" [ngClass]="{'fa-check-circle': tolerancia.vegan, 'fa-circle': !tolerancia.vegan}"></i>
           </div>
         </div>
-  
+
         <div class="form-group">
-            <label for="bajoCarbohidratos">¿Dieta baja en carbohidratos?</label>
-            <div class="toggle-button">
-              <button type="button" class="yes-button" (click)="bajoCarbohidratos = true" [ngClass]="{'active': bajoCarbohidratos}">Sí</button>
-              <button type="button" class="no-button" (click)="bajoCarbohidratos = false" [ngClass]="{'active': !bajoCarbohidratos}">No</button>
-              <i class="far" [ngClass]="{'fa-check-circle': bajoCarbohidratos, 'fa-circle': !bajoCarbohidratos}"></i>
-            </div>
+          <label for="bajoCarbohidratos">¿Dieta baja en carbohidratos?</label>
+          <div class="toggle-button">
+            <button type="button" class="yes-button" (click)="tolerancia.lowFodmap = true" [ngClass]="{'active': tolerancia.lowFodmap}">Sí</button>
+            <button type="button" class="no-button" (click)="tolerancia.lowFodmap = false" [ngClass]="{'active': !tolerancia.lowFodmap}">No</button>
+            <i class="far" [ngClass]="{'fa-check-circle': tolerancia.lowFodmap, 'fa-circle': !tolerancia.lowFodmap}"></i>
           </div>
+        </div>
         <!-- Otros campos de preferencias alimenticias aquí -->
       </div>
-  
-      <div class="form-column">
+
+      <div class="form-column" *ngIf="tolerancia">
         <div class="form-group">
           <label for="intoleranteGluten">¿Intolerante al gluten?</label>
           <div class="toggle-button">
-            <button type="button" class="yes-button" (click)="intoleranteGluten = true" [ngClass]="{'active': intoleranteGluten}">Sí</button>
-            <button type="button" class="no-button" (click)="intoleranteGluten = false" [ngClass]="{'active': !intoleranteGluten}">No</button>
-            <i class="far" [ngClass]="{'fa-check-circle': intoleranteGluten, 'fa-circle': !intoleranteGluten}"></i>
+            <button type="button" class="yes-button" (click)="tolerancia.glutenFree = true" [ngClass]="{'active': tolerancia.glutenFree}">Sí</button>
+            <button type="button" class="no-button" (click)="tolerancia.glutenFree = false" [ngClass]="{'active': !tolerancia.glutenFree}">No</button>
+            <i class="far" [ngClass]="{'fa-check-circle': tolerancia.glutenFree, 'fa-circle': !tolerancia.glutenFree}"></i>
           </div>
         </div>
-  
+
         <div class="form-group">
           <label for="intoleranteLactosa">¿Intolerante a la lactosa?</label>
           <div class="toggle-button">
-            <button type="button" class="yes-button" (click)="intoleranteLactosa = true" [ngClass]="{'active': intoleranteLactosa}">Sí</button>
-            <button type="button" class="no-button" (click)="intoleranteLactosa = false" [ngClass]="{'active': !intoleranteLactosa}">No</button>
-            <i class="far" [ngClass]="{'fa-check-circle': intoleranteLactosa, 'fa-circle': !intoleranteLactosa}"></i>
+            <button type="button" class="yes-button" (click)="tolerancia.dairyFree = true" [ngClass]="{'active': tolerancia.dairyFree}">Sí</button>
+            <button type="button" class="no-button" (click)="tolerancia.dairyFree = false" [ngClass]="{'active': !tolerancia.dairyFree}">No</button>
+            <i class="far" [ngClass]="{'fa-check-circle': tolerancia.dairyFree, 'fa-circle': !tolerancia.dairyFree}"></i>
           </div>
         </div>
-  
+
         <div class="form-group">
-            <label for="bajoGrasas">¿Dieta baja en grasas?</label>
-            <div class="toggle-button">
-                <button type="button" class="yes-button" (click)="bajoGrasas = true" [ngClass]="{'active': bajoGrasas}">Sí</button>
-                <button type="button" class="no-button" (click)="bajoGrasas = false" [ngClass]="{'active': !bajoGrasas}">No</button>
-                <i class="far" [ngClass]="{'fa-check-circle': intoleranteLactosa, 'fa-circle': !intoleranteLactosa}"></i>
-            </div>
+          <label for="bajoGrasas">¿Dieta baja en grasas?</label>
+          <div class="toggle-button">
+            <button type="button" class="yes-button" (click)="tolerancia.ketogenic = true" [ngClass]="{'active': tolerancia.ketogenic}">Sí</button>
+            <button type="button" class="no-button" (click)="tolerancia.ketogenic = false" [ngClass]="{'active': !tolerancia.ketogenic}">No</button>
+            <i class="far" [ngClass]="{'fa-check-circle': tolerancia.ketogenic, 'fa-circle': !tolerancia.ketogenic}"></i>
           </div>
+        </div>
         <!-- Otros campos de preferencias alimenticias aquí -->
       </div>
-  
-      <!-- Agrega más columnas si es necesario -->
-  
+
       <button type="submit">Guardar Cambios</button>
     </form>
   </div>
-  
+</div>

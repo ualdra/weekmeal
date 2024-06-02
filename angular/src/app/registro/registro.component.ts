@@ -37,7 +37,8 @@ export class RegistroComponent {
         email: formValue.email,
         telefono: formValue.telefono,
         username: formValue.username,
-        password: formValue.password
+        password: formValue.password,
+        tolerancias: undefined,
       };
       this.userService.createUser(user).subscribe(response => {
         console.log('Usuario registrado:', response);
