@@ -1,18 +1,13 @@
 package com.example.weekmeal_sb.services;
 
 import java.util.List;
-
 import com.example.weekmeal_sb.entity.Usuario;
 import com.example.weekmeal_sb.repository.UsuarioRepository;
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
 @Service
 public class UsuarioService {
-
 
     @Autowired
     private UsuarioRepository usuarioRepository;
@@ -36,14 +31,21 @@ public class UsuarioService {
         existingUser.setEmail(userDetails.getEmail());
         existingUser.setUsername(userDetails.getUsername());
         existingUser.setPassword(userDetails.getPassword());
-        existingUser.setFoto(userDetails.getFoto());
         existingUser.setTelefono(userDetails.getTelefono());  
 
         return usuarioRepository.save(existingUser);
     }
+
     public void deleteUser(long id) {
         usuarioRepository.deleteById(id);
     }
 
-
+    public Usuario login(Usuario user) {
+        Usuario existingUser = usuarioRepository.findByUsername(user.getUsername());
+        if (existingUser != null && existingUser.getPassword().equals(user.getPassword())) {
+            return existingUser;
+        } else {
+            throw new RuntimeException("Usuario o contraseña incorrectos");
+        }
+    }
 }

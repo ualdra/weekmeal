@@ -1,10 +1,9 @@
 export interface User {
-    idUsuario: number;
-    foto?: string;
-    username: string;
-    password: string;
-    email: string;
-    telefono: string;
-    nombre: string;
-    apellidos: string;
-  }
+  idUsuario?: number;
+  username: string;
+  password: string;
+  email: string;
+  telefono: string;
+  nombre: string;
+  apellidos: string;
+}
