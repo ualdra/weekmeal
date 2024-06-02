@@ -24,6 +24,7 @@ export const routes: Routes = [
     { path: 'recetas-guardadas', component: RecetasGuardadasComponent },
     { path: 'login', component: LoginComponent },
     { path: 'signup', component: RegistroComponent },
+    { path: 'perfil', component: PerfilComponent},
     { path: 'perfil/datos', component: PerfilDatosPersonalesComponent},
     { path: 'perfil/preferencias', component: PerfilDatosAlimenticiosComponent},
     { path: 'vista-inicial', component: VistaInicialComponent},

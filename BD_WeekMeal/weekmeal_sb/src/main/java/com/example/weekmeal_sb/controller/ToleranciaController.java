@@ -28,4 +28,9 @@ public class ToleranciaController {
     public Tolerancia getToleranciaById(@PathVariable("idTolerancia") long idTolerancia) {
         return toleranciaService.getToleranciaById(idTolerancia);
     }
+
+    @PostMapping("/{idTolerancia}")
+    public void updateTolerancia(@PathVariable("idTolerancia") long idTolerancia, @RequestBody Tolerancia toleranciaDetails) {
+        toleranciaService.updateTolerancia(idTolerancia, toleranciaDetails);
+    }
 }

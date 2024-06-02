@@ -1,11 +1,34 @@
 <app-navbar></app-navbar>
 
+<div class="container">
+  <div class="button-container">
+    <button class="profile-button" [routerLink]="['/perfil/datos']">Editar Perfil</button>
+    <button class="profile-button" [routerLink]="['/perfil/preferencias']">Preferencias Alimenticias</button>
+  </div>
 
+  <div class="profile-container">
+    <img class="background-image" src="/assets/fondo-perfil.svg" alt="Fondo del perfil">
+    <form>
 
-<div class="button-container">
-  <button class="profile-button">Editar Perfil</button>
-  <button class="profile-button" [routerLink]="['/perfil/preferencias']">Preferencias Alimenticias</button>
+      <div class="form-column">
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" name="nombre" [(ngModel)]="currentUser!.nombre" required readonly>
+
+        <label for="apellidos">Apellidos</label>
+        <input type="text" id="apellidos" name="apellidos" [(ngModel)]="currentUser!.apellidos" required readonly>
+
+        <label for="usuario">Usuario</label>
+        <input type="text" id="usuario" name="usuario" [(ngModel)]="currentUser!.username" required readonly>
+      </div>
+
+      <div class="form-column">
+        <label for="email">Email</label>
+        <input type="text" id="email" name="email" [(ngModel)]="currentUser!.email" required readonly>
+
+        <label for="telefono">Teléfono</label>
+        <input type="text" id="telefono" name="telefono" [(ngModel)]="currentUser!.telefono" required readonly>
+      </div>
+
+    </form>
+  </div>
 </div>
-
- 
-<img class="background-image" src="/assets/fondo-perfil.svg" alt="Fondo del perfil">

@@ -1,9 +1,10 @@
 export interface Tolerancia {
     idTolerancia: number;
-    vegatariano: boolean;
-    vegano: boolean;
-    intoleranteGluten: boolean;
-    intoleranteLactosa: boolean;
-    bajoCarbohidratos: boolean;
-    bajoGrasas: boolean;
+    vegetarian: boolean;
+    vegan: boolean;
+    lowFodmap: boolean;
+    glutenFree: boolean;
+    dairyFree: boolean;
+    ketogenic: boolean;
+    cheap: boolean;
 }

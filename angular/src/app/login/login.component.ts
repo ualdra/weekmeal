@@ -33,8 +33,8 @@ export class LoginComponent {
 
   onSubmit() {
     if (this.loginForm.valid) {
-      this.userService.login(this.loginForm.value).subscribe(response => {
-        console.log('Inicio de sesión exitoso:', response);
+      this.userService.login(this.loginForm.value).subscribe(user => {
+        console.log('Inicio de sesión exitoso:', user);
         // Redirigir a la página deseada después del login exitoso
         this.router.navigate(['/vista-inicial']);
       }, error => {

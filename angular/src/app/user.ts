@@ -1,3 +1,5 @@
+import { Tolerancia } from "./tolerancia";
+
 export interface User {
   idUsuario?: number;
   username: string;
@@ -6,4 +8,5 @@ export interface User {
   telefono: string;
   nombre: string;
   apellidos: string;
+  tolerancias?: Tolerancia;
 }
