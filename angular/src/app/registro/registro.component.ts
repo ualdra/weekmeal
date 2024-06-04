@@ -6,8 +6,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { User } from '../user';
+import { ToleranciaStateService } from '../tolerancia-state.service'; // Servicio para mantener el estado de la tolerancia
 import { Tolerancia } from '../tolerancia';
-import { ToleranciaService } from '../tolerancia.service';
 
 @Component({
   selector: 'app-registro',
@@ -18,10 +18,15 @@ import { ToleranciaService } from '../tolerancia.service';
 })
 export class RegistroComponent {
   registroForm: FormGroup;
-  tolerancia! : Tolerancia;
-  
+  toleranciaId: number | null = null;
+  errorMessage: string = '';
 
-  constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router, private toleranciaService: ToleranciaService) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private userService: UserService,
+    private router: Router,
+    private toleranciaStateService: ToleranciaStateService
+  ) {
     this.registroForm = this.formBuilder.group({
       nombre: ['', Validators.required],
       apellidos: ['', Validators.required],
@@ -30,24 +35,36 @@ export class RegistroComponent {
       username: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(6)]]
     });
+
+    // Leer el ID de la tolerancia del servicio de estado
+    this.toleranciaId = this.toleranciaStateService.getToleranciaId();
   }
 
   onSubmit() {
     if (this.registroForm.valid) {
       const formValue = this.registroForm.value;
-      this.tolerancia= this.toleranciaService.getTolerancia();
-      const user: User = {
-        nombre: formValue.nombre,
-        apellidos: formValue.apellidos,
-        email: formValue.email,
-        telefono: formValue.telefono,
-        username: formValue.username,
-        password: formValue.password,
-      };
-      this.userService.createUser(user).subscribe(response => {
-        this.userService.updateUserTolerancias(this.tolerancia)
-        console.log('Usuario registrado:', response);
-        this.router.navigate(['/login']);
+      const tolerancia = this.userService.getUserTolerancias(this.toleranciaId || 1);
+      tolerancia.subscribe((value: Tolerancia) => {
+        const user: User = {
+          nombre: formValue.nombre,
+          apellidos: formValue.apellidos,
+          email: formValue.email,
+          telefono: formValue.telefono,
+          username: formValue.username,
+          password: formValue.password,
+          tolerancias: value
+        };
+        // Rest of the code...
+        this.userService.createUser(user).subscribe({
+          next: response => {
+            console.log('Usuario registrado:', response);
+            this.router.navigate(['/login']);
+          },
+          error: err => {
+            console.error('Error registrando usuario:', err);
+            this.errorMessage = 'Error registrando usuario. Por favor, inténtalo de nuevo.';
+          }
+      });
       });
     }
   }
