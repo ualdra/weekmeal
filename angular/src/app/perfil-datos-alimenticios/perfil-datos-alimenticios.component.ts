@@ -39,7 +39,7 @@ export class PerfilDatosAlimenticiosComponent implements OnInit {
         this.currentUser = data;
         if (this.currentUser.tolerancias) {
           console.log('Tolerancias del usuario:', this.currentUser.tolerancias); // Depuración de tolerancias del usuario
-          this.loadTolerancias(this.currentUser.tolerancias.idTolerancia);
+          this.loadTolerancias(this.currentUser.tolerancias);
         } else {
           console.error('El usuario no tiene tolerancias asociadas');
         }

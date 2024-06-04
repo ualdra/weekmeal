@@ -7,7 +7,6 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { User } from '../user';
 import { ToleranciaStateService } from '../tolerancia-state.service'; // Servicio para mantener el estado de la tolerancia
-import { Tolerancia } from '../tolerancia';
 
 @Component({
   selector: 'app-registro',
@@ -43,28 +42,24 @@ export class RegistroComponent {
   onSubmit() {
     if (this.registroForm.valid) {
       const formValue = this.registroForm.value;
-      const tolerancia = this.userService.getUserTolerancias(this.toleranciaId || 1);
-      tolerancia.subscribe((value: Tolerancia) => {
-        const user: User = {
-          nombre: formValue.nombre,
-          apellidos: formValue.apellidos,
-          email: formValue.email,
-          telefono: formValue.telefono,
-          username: formValue.username,
-          password: formValue.password,
-          tolerancias: value
-        };
-        // Rest of the code...
-        this.userService.createUser(user).subscribe({
-          next: response => {
-            console.log('Usuario registrado:', response);
-            this.router.navigate(['/login']);
-          },
-          error: err => {
-            console.error('Error registrando usuario:', err);
-            this.errorMessage = 'Error registrando usuario. Por favor, inténtalo de nuevo.';
-          }
-      });
+      const user: User = {
+        nombre: formValue.nombre,
+        apellidos: formValue.apellidos,
+        email: formValue.email,
+        telefono: formValue.telefono,
+        username: formValue.username,
+        password: formValue.password,
+        tolerancias: this.toleranciaId || 0
+      };
+      this.userService.createUser(user).subscribe({
+        next: response => {
+          console.log('Usuario registrado:', response);
+          this.router.navigate(['/login']);
+        },
+        error: err => {
+          console.error('Error registrando usuario:', err);
+          this.errorMessage = 'Error registrando usuario. Por favor, inténtalo de nuevo.';
+        }
       });
     }
   }
