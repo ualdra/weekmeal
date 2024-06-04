@@ -28,7 +28,7 @@ export class LoginComponent {
   }
 
   navigateToRegistro() {
-    this.router.navigate(['/registro']);
+    this.router.navigate(['/configuracion-inicial']);
   }
 
   onSubmit() {

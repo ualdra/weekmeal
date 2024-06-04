@@ -6,6 +6,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { User } from '../user';
+import { Tolerancia } from '../tolerancia';
+import { ToleranciaService } from '../tolerancia.service';
 
 @Component({
   selector: 'app-registro',
@@ -16,8 +18,10 @@ import { User } from '../user';
 })
 export class RegistroComponent {
   registroForm: FormGroup;
+  tolerancia! : Tolerancia;
+  
 
-  constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router) {
+  constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router, private toleranciaService: ToleranciaService) {
     this.registroForm = this.formBuilder.group({
       nombre: ['', Validators.required],
       apellidos: ['', Validators.required],
@@ -31,6 +35,7 @@ export class RegistroComponent {
   onSubmit() {
     if (this.registroForm.valid) {
       const formValue = this.registroForm.value;
+      this.tolerancia= this.toleranciaService.getTolerancia();
       const user: User = {
         nombre: formValue.nombre,
         apellidos: formValue.apellidos,
@@ -38,12 +43,16 @@ export class RegistroComponent {
         telefono: formValue.telefono,
         username: formValue.username,
         password: formValue.password,
-        tolerancias: undefined,
       };
       this.userService.createUser(user).subscribe(response => {
+        this.userService.updateUserTolerancias(this.tolerancia)
         console.log('Usuario registrado:', response);
         this.router.navigate(['/login']);
       });
     }
+  }
+
+  goToLogin() {
+    this.router.navigate(['/login']);
   }
 }

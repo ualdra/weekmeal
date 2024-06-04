@@ -22,6 +22,7 @@
     justify-content: space-between;
     margin-bottom: 4%;
     margin-right: 4%;
+    align-items: flex-start; /* Asegura que los elementos se alineen desde la parte superior */
 }
 
 .list {
@@ -34,16 +35,21 @@
 
 .list h2 {
     color: white;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     text-align: center;
 }
 
 .options {
     background-color: white;
     border-radius: 10px;
-    padding: 20px 50px 100px 20px;
+    padding: 20px;
     box-shadow: 1px 1px 8px var(--verde-claro); 
     font-size: 1.1em;
+    width: 250px; /* Ajustar el ancho para mejor alineación */
+    min-height: 250px; /* Establecer una altura mínima para asegurar que los recuadros sean iguales */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Asegura que el contenido se distribuya de manera uniforme */
 }
 
 .options > * {
@@ -59,13 +65,21 @@
     cursor: pointer;
     font-size: 1.2em;
     width: auto;
-    position: absolute;
-    bottom: -20px;
-    left: 50%;
-    transform: translateX(-50%);
+    position: relative;
+    margin-top: 20px; /* Añadir margen para separar del contenedor */
 }
 
 .boton[disabled] {
-  filter: brightness(85%);
-  cursor: not-allowed;
+    filter: brightness(85%);
+    cursor: not-allowed;
+}
+
+.radio-custom-label, .checkbox-custom-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.radio-custom, .checkbox-custom {
+    margin-right: 10px; /* Añadir espacio entre el input y el texto */
 }

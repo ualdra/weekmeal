@@ -31,7 +31,7 @@
       </div>
       <div style="display: flex; justify-content: space-between;">
         <button type="submit" [disabled]="registroForm.invalid">Registrarse</button>
-        <button type="button" routerLink="/login">¡Ya tengo cuenta!</button>
+        <button type="button" (click)="goToLogin()">¡Ya tengo cuenta!</button>
       </div>
     </form>
   </div>
