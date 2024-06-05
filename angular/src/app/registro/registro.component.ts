@@ -17,7 +17,7 @@ import { ToleranciaStateService } from '../tolerancia-state.service'; // Servici
 })
 export class RegistroComponent {
   registroForm: FormGroup;
-  toleranciaId: number | null = null;
+  toleranciaId: number =0;
   errorMessage: string = '';
 
   constructor(
@@ -49,12 +49,11 @@ export class RegistroComponent {
         telefono: formValue.telefono,
         username: formValue.username,
         password: formValue.password,
-        tolerancias: this.toleranciaId || 0
       };
       this.userService.createUser(user).subscribe({
         next: response => {
           console.log('Usuario registrado:', response);
-          this.router.navigate(['/login']);
+            this.router.navigate(['/login']);
         },
         error: err => {
           console.error('Error registrando usuario:', err);

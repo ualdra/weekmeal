@@ -20,4 +20,8 @@ export class ToleranciaService {
   getTolerancia(): Tolerancia {
     return this.tolerancia;
   }
+
+  getTolerancias(): Observable<Tolerancia[]> {
+    return this.http.get<Tolerancia[]>(this.apiUrl);
+  }
 }

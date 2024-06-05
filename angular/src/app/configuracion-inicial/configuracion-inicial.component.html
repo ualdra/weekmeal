@@ -1,39 +1,38 @@
 <div class="contenedor">
-    <div class="configuracion">
-      <div class="list">
-        <h2>Preferencias alimentarias</h2>
-        <div class="options">
-          <label class="checkbox-custom-label">
-            <input type="checkbox" [(ngModel)]="tolerancia.vegetarian" class="checkbox-custom">
-            Vegetariano
-          </label>
-          <label class="checkbox-custom-label">
-            <input type="checkbox" [(ngModel)]="tolerancia.vegan" class="checkbox-custom">
-            Vegano
-          </label>
-          <label class="checkbox-custom-label">
-            <input type="checkbox" [(ngModel)]="tolerancia.lowFodmap" class="checkbox-custom">
-            Low FODMAP
-          </label>
-          <label class="checkbox-custom-label">
-            <input type="checkbox" [(ngModel)]="tolerancia.glutenFree" class="checkbox-custom">
-            Sin Gluten
-          </label>
-          <label class="checkbox-custom-label">
-            <input type="checkbox" [(ngModel)]="tolerancia.dairyFree" class="checkbox-custom">
-            Sin Lácteos
-          </label>
-          <label class="checkbox-custom-label">
-            <input type="checkbox" [(ngModel)]="tolerancia.ketogenic" class="checkbox-custom">
-            Cetogénico
-          </label>
-          <label class="checkbox-custom-label">
-            <input type="checkbox" [(ngModel)]="tolerancia.cheap" class="checkbox-custom">
-            Barato
-          </label>
-        </div>
+  <div class="configuracion">
+    <div class="list">
+      <h2>Preferencias alimentarias</h2>
+      <div class="options">
+        <label class="checkbox-custom-label">
+          <input type="checkbox" [(ngModel)]="tolerancia.vegetarian" class="checkbox-custom">
+          Vegetariano
+        </label>
+        <label class="checkbox-custom-label">
+          <input type="checkbox" [(ngModel)]="tolerancia.vegan" class="checkbox-custom">
+          Vegano
+        </label>
+        <label class="checkbox-custom-label">
+          <input type="checkbox" [(ngModel)]="tolerancia.lowFodmap" class="checkbox-custom">
+          Low FODMAP
+        </label>
+        <label class="checkbox-custom-label">
+          <input type="checkbox" [(ngModel)]="tolerancia.glutenFree" class="checkbox-custom">
+          Sin Gluten
+        </label>
+        <label class="checkbox-custom-label">
+          <input type="checkbox" [(ngModel)]="tolerancia.dairyFree" class="checkbox-custom">
+          Sin Lácteos
+        </label>
+        <label class="checkbox-custom-label">
+          <input type="checkbox" [(ngModel)]="tolerancia.ketogenic" class="checkbox-custom">
+          Cetogénico
+        </label>
+        <label class="checkbox-custom-label">
+          <input type="checkbox" [(ngModel)]="tolerancia.cheap" class="checkbox-custom">
+          Barato
+        </label>
       </div>
     </div>
-    <button class="boton" (click)="continuar()">Continuar</button>
   </div>
-  
+  <button class="boton" (click)="continuar()">Continuar</button>
+</div>

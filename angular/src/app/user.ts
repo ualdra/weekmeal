@@ -8,5 +8,5 @@ export interface User {
   telefono: string;
   nombre: string;
   apellidos: string;
-  tolerancias: number;
+  tolerancias?: Tolerancia;
 }
