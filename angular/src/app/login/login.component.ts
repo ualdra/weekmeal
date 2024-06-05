@@ -27,10 +27,6 @@ export class LoginComponent {
     this.showPassword = !this.showPassword;
   }
 
-  navigateToRegistro() {
-    this.router.navigate(['/registro']);
-  }
-
   onSubmit() {
     if (this.loginForm.valid) {
       this.userService.login(this.loginForm.value).subscribe(user => {
