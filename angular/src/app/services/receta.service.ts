@@ -29,6 +29,14 @@ export class RecetaService {
         catchError(this.handleError<Receta>('getReceta', {} as Receta))
       );
   }
+
+  getMenuSemanalUsuario(idUsuario: number): Observable<any> {
+    const url = `${this.backend}/usuario/menu-semanal/${idUsuario}`;
+    return this.http.get<any>(url)
+      .pipe(
+        catchError(this.handleError<any>('getMenuSemanalUsuario', {}))
+      );
+  }
   
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
