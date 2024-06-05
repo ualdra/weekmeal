@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { NavbarComponent } from "../navbar/navbar.component";
-import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { User } from '../user';
-import { Tolerancia } from '../tolerancia';
-import { UserService } from '../user.service';
+import { User } from '../interfaces/user';
+import { Tolerancia } from '../interfaces/tolerancia';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-perfil-datos-alimenticios',

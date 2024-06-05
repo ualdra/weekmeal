@@ -4,8 +4,8 @@ import { PerfilDatosAlimenticiosComponent } from "../perfil-datos-alimenticios/p
 import { NavbarComponent } from "../navbar/navbar.component"; 
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { UserService } from '../user.service';
-import { User } from '../user';
+import { User } from '../interfaces/user';
+import { UserService } from '../services/user.service';
 
 @Component({
     selector: 'app-perfil',
