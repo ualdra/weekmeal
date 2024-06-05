@@ -5,6 +5,8 @@ import { Observable, of, throwError } from 'rxjs';
 import { catchError, map, switchMap, tap } from 'rxjs/operators';
 
 import { Receta } from '../interfaces/receta';
+import { RecetaFav } from '../interfaces/RecetaFav';
+import { RecetaBackend } from '../interfaces/recetabackend';
 
 @Injectable({
   providedIn: 'root'
@@ -13,12 +15,13 @@ import { Receta } from '../interfaces/receta';
 export class RecetaService {
 
   private backend = 'http://localhost:8080/api';  
-  private recetasUrl = 'https://api.spoonacular.com/recipes';
+  // private recetasUrl = 'https://api.spoonacular.com/recipes';
+  private recetasFavUrl = 'http://localhost:8080/api/receta-fav'; 
+  private recetasUrl = 'http://localhost:8080/api/receta';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
-
 
   constructor(private http: HttpClient) { }
 
@@ -37,6 +40,18 @@ export class RecetaService {
     };
   }
 
-  
+  createReceta(receta: RecetaBackend): Observable<RecetaBackend> {
+    return this.http.post<RecetaBackend>(this.recetasUrl, receta);
+  }
+
+  createRecetaFav(recetaFav: RecetaFav): Observable<RecetaFav> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post<RecetaFav>(this.recetasFavUrl, recetaFav, { headers });
+  }
+
+  getRecetaById(id: number): Observable<Receta> {
+    const url = `${this.recetasUrl}/${id}`;
+    return this.http.get<Receta>(url);
+  }
 
 }

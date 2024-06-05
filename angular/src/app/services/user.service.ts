@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject, tap } from 'rxjs';
-import { User } from './user';
-import { Tolerancia } from './tolerancia';
+import { User } from '../interfaces/user';
+import { Tolerancia } from '../interfaces/tolerancia';
 
 @Injectable({
   providedIn: 'root'
