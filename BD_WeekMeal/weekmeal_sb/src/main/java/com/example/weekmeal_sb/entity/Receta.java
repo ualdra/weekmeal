@@ -2,8 +2,6 @@ package com.example.weekmeal_sb.entity;
 
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import lombok.*;
 
 import jakarta.persistence.*;
@@ -15,10 +13,9 @@ import jakarta.validation.constraints.NotBlank;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Receta {
+    
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idReceta;
-
     @NotBlank
     @Column(length = 1024)
     private String nombre;
@@ -33,7 +30,6 @@ public class Receta {
     private String pasosReceta;
 
     @OneToMany(mappedBy = "receta")
-    @JsonIgnore
     private List<MenuReceta> menus;
 
 }

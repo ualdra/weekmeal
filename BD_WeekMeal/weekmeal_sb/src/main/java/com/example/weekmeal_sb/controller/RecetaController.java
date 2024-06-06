@@ -26,6 +26,11 @@ public class RecetaController {
         return recetaService.getRecetaById(id);
     }
 
+    @GetMapping("/nombre/{nombre}")
+    public Optional<Receta> getRecetaByNombre(@PathVariable String nombre) {
+        return recetaService.getRecetaByNombre(nombre);
+    }
+
     @PostMapping
     public Receta createReceta(@RequestBody Receta receta) {
         return recetaService.saveReceta(receta);

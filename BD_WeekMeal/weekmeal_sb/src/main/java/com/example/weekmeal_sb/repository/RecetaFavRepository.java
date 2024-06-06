@@ -10,5 +10,5 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 @EnableJpaRepositories
 @CrossOrigin(originPatterns = "", allowCredentials = "true", allowedHeaders = "")
 public interface RecetaFavRepository extends JpaRepository<RecetaFav, RecetaFavId> {
-
+    boolean existsByUsuarioIdUsuarioAndRecetaIdReceta(Long idUsuario, Long idReceta);
 }

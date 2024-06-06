@@ -36,8 +36,14 @@ public class RecetaFavController {
         return recetaFavService.getRecetaFavById(id);
     }
 
+    @GetMapping("/exists")
+    public boolean existsByUsuarioAndReceta(@RequestParam Long idUsuario, @RequestParam Long idReceta) {
+        return recetaFavService.existsByUsuarioAndReceta(idUsuario, idReceta);
+    }
+
     @DeleteMapping("/{id}")
     public void deleteRecetaFav(@PathVariable RecetaFavId id) {
         recetaFavService.deleteRecetaFav(id);
     }
+
 }

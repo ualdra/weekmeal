@@ -28,12 +28,20 @@ export class RecetaInfoComponent implements OnInit {
     this.userService.currentUser.subscribe(user => {
       this.currentUser = user;
     });
+
+    setTimeout(() => {
+      if (this.receta && this.currentUser) {
+        this.checkIfFavorite();
+      }
+    }, 1000); // Espera 1 segundo
   }
 
   toggleFavorite() {
     this.favorito = !this.favorito;
     if (this.favorito && this.receta) {
       this.addRecetaFav();
+    } else if (!this.favorito && this.receta) {
+      this.removeRecetaFav();
     }
   }
 
@@ -61,17 +69,16 @@ export class RecetaInfoComponent implements OnInit {
       return;
     }
     // Verificar si la receta ya existe en la base de datos
-    this.recetaService.getRecetaById(this.recetaback.idReceta).subscribe(
+    this.recetaService.getRecetaByNombre(this.recetaback.nombre).subscribe(
       existingReceta => {
         if (!existingReceta) {
-          console.warn('Receta existente:', existingReceta);
           console.warn('Receta:', this.recetaback);
 
           // Si la receta no existe, crearla primero
           this.recetaService.createReceta(this.recetaback!).subscribe( // <-- Utilizamos el operador '!' para indicar que estamos seguro de que receta no es undefined
             newReceta => {
               // Una vez creada la receta, crear la entrada en RecetaFav
-              // this.createRecetaFav(newReceta.idReceta);
+              this.createRecetaFav(newReceta.idReceta);
             },
             error => {
               console.error('Error al crear la receta:', error);
@@ -79,7 +86,7 @@ export class RecetaInfoComponent implements OnInit {
           );
         } else {
           // Si la receta ya existe, crear la entrada en RecetaFav directamente
-          // this.createRecetaFav(existingReceta.id);
+          this.createRecetaFav(existingReceta.id);
         }
       },
       error => {
@@ -88,25 +95,44 @@ export class RecetaInfoComponent implements OnInit {
     );
   }
 
-  // createRecetaFav(recetaId: number) {
-  //   if (!this.currentUser || !this.currentUser.idUsuario) {
-  //     console.error('No se encontró el usuario actual');
-  //     return;
-  //   }
+  createRecetaFav(recetaId: number) {
+    console.log("currentUser", this.currentUser);
+    if (!this.currentUser || !this.currentUser.idUsuario) {
+      console.error('No se encontró el usuario actual');
+      return;
+    }
 
-  //   const newRecetaFav: RecetaFav = {
-  //     usuario: { idUsuario: this.currentUser.idUsuario },
-  //     receta: { idReceta: recetaId }
-  //   };
+    const newRecetaFav: RecetaFav = {
+      usuario: { idUsuario: this.currentUser.idUsuario },
+      receta: { idReceta: recetaId }
+    };
 
-  //   this.recetaService.createRecetaFav(newRecetaFav).subscribe(
-  //     data => {
-  //       console.log('Receta favorita creada:', data);
-  //     },
-  //     error => {
-  //       console.error('Error al crear la receta favorita:', error);
-  //     }
-  //   );
-  // }
+    this.recetaService.createRecetaFav(newRecetaFav).subscribe(
+      data => {
+        console.log('Receta favorita creada:', data);
+      },
+      error => {
+        console.error('Error al crear la receta favorita:', error);
+      }
+    );
+  }
+
+  checkIfFavorite() {
+    if (!this.currentUser || !this.receta) {
+      return;
+    }
+    this.recetaService.existsRecetaFav(this.currentUser.idUsuario!, this.receta.id).subscribe(
+      isFavorite => {
+        this.favorito = isFavorite;
+      },
+      error => {
+        console.error('Error al verificar si la receta es favorita:', error);
+      }
+    );
+  }
+
+  removeRecetaFav() {
+    // Implementar la lógica para eliminar la receta de los favoritos
+  }
 
 }

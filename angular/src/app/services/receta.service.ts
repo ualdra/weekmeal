@@ -54,4 +54,12 @@ export class RecetaService {
     return this.http.get<Receta>(url);
   }
 
+  getRecetaByNombre(nombre: string): Observable<Receta> {
+    return this.http.get<Receta>(`${this.recetasUrl}/nombre/${nombre}`);
+  }
+
+  existsRecetaFav(idUsuario: number, idReceta: number): Observable<boolean> {
+    return this.http.get<boolean>(`${this.recetasFavUrl}/exists?idUsuario=${idUsuario}&idReceta=${idReceta}`);
+  }
+
 }

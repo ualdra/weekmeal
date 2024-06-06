@@ -35,7 +35,7 @@ public class UsuarioService {
         existingUser.setTelefono(userDetails.getTelefono());  
         existingUser.setTolerancias(userDetails.getTolerancias());
         existingUser.setMenu(userDetails.getMenu());
-        existingUser.setRecetasFavoritas(userDetails.getRecetasFavoritas());
+        // existingUser.setRecetasFavoritas(userDetails.getRecetasFavoritas());
         existingUser.setTelefono(userDetails.getTelefono());
 
         return usuarioRepository.save(existingUser);
