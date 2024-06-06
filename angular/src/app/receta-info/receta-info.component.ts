@@ -75,7 +75,7 @@ export class RecetaInfoComponent implements OnInit {
           console.warn('Receta:', this.recetaback);
 
           // Si la receta no existe, crearla primero
-          this.recetaService.createReceta(this.recetaback!).subscribe( // <-- Utilizamos el operador '!' para indicar que estamos seguro de que receta no es undefined
+          this.recetaService.createReceta(this.recetaback!).subscribe( 
             newReceta => {
               // Una vez creada la receta, crear la entrada en RecetaFav
               this.createRecetaFav(newReceta.idReceta);
@@ -137,10 +137,6 @@ export class RecetaInfoComponent implements OnInit {
       console.error('No se encontró el usuario actual o la receta');
       return;
     }
-
-    console.log('Eliminando receta favorita:', this.receta.id);
-    console.log('Usuario actual:', this.currentUser.idUsuario);
-
 
     this.recetaService.deleteRecetaFav(this.currentUser.idUsuario!, this.receta.id).subscribe(
       () => {

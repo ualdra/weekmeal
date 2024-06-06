@@ -14,9 +14,9 @@ import { RecetaBackend } from '../interfaces/recetabackend';
 
 export class RecetaService {
 
-  private backend = 'http://localhost:8080/api';  
+  private backend = 'http://localhost:8080/api';
   // private recetasUrl = 'https://api.spoonacular.com/recipes';
-  private recetasFavUrl = 'http://localhost:8080/api/receta-fav'; 
+  private recetasFavUrl = 'http://localhost:8080/api/receta-fav';
   private recetasUrl = 'http://localhost:8080/api/receta';
 
   httpOptions = {
@@ -32,7 +32,7 @@ export class RecetaService {
         catchError(this.handleError<Receta>('getReceta', {} as Receta))
       );
   }
-  
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error); // log to console instead
@@ -62,6 +62,7 @@ export class RecetaService {
     return this.http.get<boolean>(`${this.recetasFavUrl}/exists?idUsuario=${idUsuario}&idReceta=${idReceta}`);
   }
 
+  // Método para eliminar una receta favorita
   deleteRecetaFav(idUsuario: number, idReceta: number): Observable<any> {
     const url = `${this.recetasFavUrl}/${idUsuario}/${idReceta}`;
     return this.http.delete(url, this.httpOptions).pipe(
@@ -69,5 +70,12 @@ export class RecetaService {
     );
   }
 
+  // Nuevo método para obtener todas las recetas favoritas de un usuario
+  getRecetasFavByUsuario(idUsuario: number): Observable<RecetaFav[]> {
+    const url = `${this.recetasFavUrl}/usuario/${idUsuario}`;
+    return this.http.get<RecetaFav[]>(url).pipe(
+      catchError(this.handleError<RecetaFav[]>('getRecetasFavByUsuario', []))
+    );
+  }
 
 }
