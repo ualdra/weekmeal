@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { User } from '../interfaces/user';
 import { Tolerancia } from '../interfaces/tolerancia';
 import { UserService } from '../services/user.service';
+import { ToleranciaService } from '../services/tolerancia.service';
 
 @Component({
   selector: 'app-perfil-datos-alimenticios',
@@ -18,45 +19,25 @@ export class PerfilDatosAlimenticiosComponent implements OnInit {
   currentUser: User | null = null;
   tolerancia: Tolerancia | null = null;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private toleranciaService: ToleranciaService ) { }
 
   ngOnInit(): void {
     this.userService.currentUser.subscribe(user => {
       this.currentUser = user;
       console.log('Usuario actual en ngOnInit:', this.currentUser); // Depuración inicial
       if (this.currentUser) {
-        // this.loadUser();
+        this.loadTolerancias();
       }
     });
   }
 
-  // loadUser(): void {
-  //   const userId = this.currentUser!.idUsuario;
-  //   console.log('Cargando datos del usuario con ID:', userId); // Depuración de carga de usuario
-  //   this.userService.getUserById(userId!).subscribe(
-  //     data => {
-  //       console.log('Datos del usuario recibidos:', data);
-  //       this.currentUser = data;
-  //       if (this.currentUser.tolerancias) {
-  //         console.log('Tolerancias del usuario:', this.currentUser.tolerancias); // Depuración de tolerancias del usuario
-  //         this.loadTolerancias(this.currentUser.tolerancias.idTolerancia);
-  //       } else {
-  //         console.error('El usuario no tiene tolerancias asociadas');
-  //       }
-  //     },
-  //     error => {
-  //       console.error('Error al cargar los datos del usuario', error);
-  //     }
-  //   );
-  // }
+  loadTolerancias(): void {
 
-  loadTolerancias(idTolerancia: number): void {
-    console.log('Cargando tolerancias con ID:', idTolerancia); // Depuración de carga de tolerancias
-    this.userService.getUserTolerancias(idTolerancia).subscribe(
+    this.toleranciaService.getToleranciaByUserId(this.currentUser!.idUsuario!).subscribe(
       data => {
         console.log('Datos de las tolerancias recibidos:', data);
-        this.tolerancia = { ...data, idTolerancia }; // Asigna manualmente el idTolerancia
-        console.log('ID de tolerancia recibido:', this.tolerancia.idTolerancia); // Verificación del ID de tolerancia
+        this.tolerancia = data;
+        console.log('Tolerancia después de asignación:', this.tolerancia);
       },
       error => {
         console.error('Error al cargar las tolerancias del usuario', error);
