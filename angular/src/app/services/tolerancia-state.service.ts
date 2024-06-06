@@ -1,16 +1,18 @@
 import { Injectable } from '@angular/core';
+import { Tolerancia } from '../interfaces/tolerancia';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ToleranciaStateService {
-  private toleranciaId: number=0;
+  
+  private tolerancia!: Tolerancia;
 
-  setToleranciaId(id: number): void {
-    this.toleranciaId = id;
+  setTolerancia(tolerancia: Tolerancia) {
+    this.tolerancia = tolerancia;
   }
 
-  getToleranciaId(): number {
-    return this.toleranciaId;
+  getTolerancia(): Tolerancia {
+    return this.tolerancia;
   }
 }

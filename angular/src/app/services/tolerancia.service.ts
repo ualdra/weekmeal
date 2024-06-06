@@ -7,21 +7,30 @@ import { Tolerancia } from '../interfaces/tolerancia'; // Importar la interfaz T
   providedIn: 'root'
 })
 export class ToleranciaService {
-  private apiUrl = 'http://localhost:8080/api/tolerancias';
+
+  private apiUrl = 'http://localhost:8080/api/tolerancia';
+
   constructor(private http: HttpClient) {}
 
   tolerancia!: Tolerancia;
 
-  createTolerancia(tolerancia: Tolerancia): Observable<Tolerancia> {
-    this.tolerancia = tolerancia;
-    return this.http.post<Tolerancia>(this.apiUrl, tolerancia);
-  }
-
-  getTolerancia(): Tolerancia {
-    return this.tolerancia;
-  }
-
   getTolerancias(): Observable<Tolerancia[]> {
     return this.http.get<Tolerancia[]>(this.apiUrl);
+  }
+
+  createTolerancia(tolerancia: Tolerancia): Observable<Tolerancia> {
+    return this.http.post<Tolerancia>(`${this.apiUrl}`, tolerancia);
+  }
+
+  getToleranciaById(idTolerancia: number): Observable<Tolerancia> {
+    return this.http.get<Tolerancia>(`${this.apiUrl}/${idTolerancia}`);
+  }
+
+  getToleranciaByUserId(userId: number): Observable<Tolerancia> {
+    return this.http.get<Tolerancia>(`${this.apiUrl}/usuario/${userId}`);
+  }
+
+  updateTolerancia(idTolerancia: number, tolerancia: Tolerancia): Observable<void> {
+    return this.http.put<void>(`${this.apiUrl}/${idTolerancia}`, tolerancia);
   }
 }

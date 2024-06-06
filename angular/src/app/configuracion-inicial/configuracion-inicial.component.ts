@@ -1,42 +1,37 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { ToleranciaService } from '../services/tolerancia.service'; // Servicio para manejar las tolerancias
-import { ToleranciaStateService } from '../services/tolerancia-state.service'; // Servicio para mantener el estado de la tolerancia
+import { ToleranciaStateService } from '../services/tolerancia-state.service'; 
 import { Tolerancia } from '../interfaces/tolerancia';
-import { FormsModule } from '@angular/forms';
 import { NgFor } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-configuracion-inicial',
   standalone: true,
   templateUrl: './configuracion-inicial.component.html',
   styleUrls: ['./configuracion-inicial.component.css'],
-  imports: [FormsModule, NgFor]
+  imports: [FormsModule]
 })
 export class ConfiguracionInicialComponent {
+
   tolerancia: Tolerancia = {
-    idTolerancia: 0,
     vegetarian: false,
     vegan: false,
     lowFodmap: false,
     glutenFree: false,
     dairyFree: false,
     ketogenic: false,
-    cheap: false
+    cheap: false,
   };
 
   constructor(
     private router: Router,
-    private toleranciaService: ToleranciaService,
     private toleranciaStateService: ToleranciaStateService
   ) {}
 
   continuar() {
-    this.toleranciaService.createTolerancia(this.tolerancia).subscribe(response => {
-      console.log('Tolerancia creada:', response);
-      // Guardar el ID de la tolerancia en el servicio de estado
-      this.toleranciaStateService.setToleranciaId(response.idTolerancia);
-      this.router.navigate(['/signup']);
-    });
+    this.toleranciaStateService.setTolerancia(this.tolerancia);
+    console.log('Tolerancia guardada:', this.toleranciaStateService.getTolerancia());
+    this.router.navigate(['/signup']);
   }
 }

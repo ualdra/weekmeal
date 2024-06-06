@@ -33,7 +33,6 @@ public class Tolerancia {
     @NotNull
     private boolean cheap;
 
-    @OneToOne
-    @JoinColumn(name = "idUsuario")
-    private Usuario usuario;
+    @NotNull
+    private Long idUsuario;
 }
