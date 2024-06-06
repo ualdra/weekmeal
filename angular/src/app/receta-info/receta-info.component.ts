@@ -2,11 +2,11 @@ import { NgFor, NgIf } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { Receta, Ingrediente, Instruction } from '../interfaces/receta';
-import { RecetaFav } from '../interfaces/RecetaFav';
 import { RecetaService } from '../services/receta.service';
 import { RecetaBackend } from '../interfaces/recetabackend';
 import { UserService } from '../services/user.service';
 import { User } from '../interfaces/user';
+import { RecetaFav } from '../interfaces/RecetaFav';
 
 @Component({
   selector: 'app-receta-info',
