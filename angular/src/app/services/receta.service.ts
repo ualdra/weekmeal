@@ -54,4 +54,20 @@ export class RecetaService {
     return this.http.get<Receta>(url);
   }
 
+  getRecetaByNombre(nombre: string): Observable<Receta> {
+    return this.http.get<Receta>(`${this.recetasUrl}/nombre/${nombre}`);
+  }
+
+  existsRecetaFav(idUsuario: number, idReceta: number): Observable<boolean> {
+    return this.http.get<boolean>(`${this.recetasFavUrl}/exists?idUsuario=${idUsuario}&idReceta=${idReceta}`);
+  }
+
+  deleteRecetaFav(idUsuario: number, idReceta: number): Observable<any> {
+    const url = `${this.recetasFavUrl}/${idUsuario}/${idReceta}`;
+    return this.http.delete(url, this.httpOptions).pipe(
+      catchError(this.handleError<any>('deleteRecetaFav'))
+    );
+  }
+
+
 }

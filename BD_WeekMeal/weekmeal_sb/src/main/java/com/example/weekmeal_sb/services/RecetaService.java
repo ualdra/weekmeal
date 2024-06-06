@@ -24,6 +24,10 @@ public class RecetaService {
         return recetaRepository.findById(id);
     }
 
+    public Optional<Receta> getRecetaByNombre(String nombre) {
+        return recetaRepository.findByNombre(nombre);
+    }
+
     public Receta saveReceta(Receta receta) {
         return recetaRepository.save(receta);
     }
@@ -32,7 +36,4 @@ public class RecetaService {
         recetaRepository.deleteById(id);
     }
 
-
-
-    
 }

@@ -31,7 +31,12 @@ public class RecetaFavService {
         return recetaFavRepository.findById(id).orElse(null);
     }
 
-    public void deleteRecetaFav(RecetaFavId id) {
+    public boolean existsByUsuarioAndReceta(Long idUsuario, Long idReceta) {
+        return recetaFavRepository.existsByUsuarioIdUsuarioAndRecetaIdReceta(idUsuario, idReceta);
+    }
+
+    public void deleteRecetaFavById(RecetaFavId id) {
         recetaFavRepository.deleteById(id);
     }
+
 }
