@@ -6,14 +6,17 @@
   --xoffset: 150px;
   --yoffset: -0.75rem;
   height: 88%;
+  overflow-y: auto; /* Agrega scroll vertical si es necesario */
 }
 
 .resultados {
   display: flex;
   width: 80%;
-  height: 92%;
+  min-height: 92%;
+  height: auto;
   flex-wrap: wrap;
-  flex-direction: column;
+  flex-direction: space-between;
+  justify-content: center;
   align-items: center;
   background-color: var(--verde-oscuro);
   border-radius: 5px;
@@ -22,13 +25,15 @@
 .recetas {
   display: flex;
   width: 100%;
-  height: 90%;
+  min-height: 85%;
+  height: auto; /* Cambiado a auto para ajustarse al contenido */
   flex-wrap: wrap;
   justify-content: center;
   background-color: var(--verde-oscuro);
   border-radius: 5px;
   margin-top: 1rem;
 }
+
 
 .card {
   width: 150px;
@@ -107,6 +112,7 @@ a {
   display: inline-block;
   padding: 10px 20px;
   padding-left: 35px;
+
   background-color: white;
   color: black;
   border: none;
@@ -124,7 +130,7 @@ a {
 .buttonNext::after {
   content: "";
   position: absolute;
-  top: 0px;
+  top: 0;
   right: -20px;
   width: 0;
   height: 0;
