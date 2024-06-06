@@ -5,21 +5,17 @@
     justify-content: center;
 }
 
-.botones {
+.titulo {
     display: flex;
     width: 80%;
-    flex-direction: row;
     justify-content: left;
     margin-bottom: 20px;
     margin-top: 45px;
 }
 
-.botones button {
-    margin: 0 10px;
-}
-
-.botones button:first-child {
-    margin-left: 0;
+.titulo h2 {
+    font-size: 1.8rem;
+    color: var(--verde-oscuro);
 }
 
 .resultados {
@@ -41,13 +37,15 @@
     background-color: white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     display: flex;
-    /* Agrega flexbox para centrar vertical y horizontalmente */
     align-items: center;
-    /* Centra horizontalmente los elementos */
     justify-content: center;
-    /* Centra verticalmente los elementos */
     flex-direction: column;
     margin: 20px;
+    transition: transform 0.2s; /* Añadir transición */
+}
+
+.card:hover {
+    transform: scale(1.05); /* Aumentar tamaño al pasar el ratón */
 }
 
 .imagen {
@@ -76,32 +74,7 @@ a {
     text-decoration: none;
 }
 
-.favoritos {
-    background-color: var(--verde-oscuro);
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 10px;
-    border: none;
-    cursor: pointer;
-    width: 200px;
-    font-size: 1.2em;
-}
-
-.recomendaciones {
-    background-color: var(--verde-claro);
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 10px;
-    border: none;
-    cursor: pointer;
-    width: 200px;
-    font-size: 1.2em;
-}
-
-.recomendaciones:hover {
-    background-color: var(--verde-oscuro);
-}
-
-.favoritos:hover {
-    background-color: var(--verde-claro);
+.no-resultados h1 {
+    font-size: 1.8rem;
+    color: var(--verde-oscuro);
 }

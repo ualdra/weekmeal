@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Tolerancia } from './tolerancia'; // Importar la interfaz Tolerancia
+import { Tolerancia } from '../interfaces/tolerancia'; // Importar la interfaz Tolerancia
 
 @Injectable({
   providedIn: 'root'

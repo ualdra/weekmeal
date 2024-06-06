@@ -1,31 +1,21 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { UserService } from '../user.service';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
-import { User } from '../user';
-import { ToleranciaStateService } from '../tolerancia-state.service'; // Servicio para mantener el estado de la tolerancia
+import { User } from '../interfaces/user';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-registro',
   standalone: true,
   templateUrl: './registro.component.html',
   styleUrls: ['./registro.component.css'],
-  imports: [CommonModule, FormsModule, ReactiveFormsModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule],
 })
 export class RegistroComponent {
   registroForm: FormGroup;
-  toleranciaId: number =0;
-  errorMessage: string = '';
 
-  constructor(
-    private formBuilder: FormBuilder,
-    private userService: UserService,
-    private router: Router,
-    private toleranciaStateService: ToleranciaStateService
-  ) {
+  constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router) {
     this.registroForm = this.formBuilder.group({
       nombre: ['', Validators.required],
       apellidos: ['', Validators.required],
@@ -34,9 +24,6 @@ export class RegistroComponent {
       username: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(6)]]
     });
-
-    // Leer el ID de la tolerancia del servicio de estado
-    this.toleranciaId = this.toleranciaStateService.getToleranciaId();
   }
 
   onSubmit() {
@@ -49,21 +36,12 @@ export class RegistroComponent {
         telefono: formValue.telefono,
         username: formValue.username,
         password: formValue.password,
+        tolerancias: undefined,
       };
-      this.userService.createUser(user).subscribe({
-        next: response => {
-          console.log('Usuario registrado:', response);
-            this.router.navigate(['/login']);
-        },
-        error: err => {
-          console.error('Error registrando usuario:', err);
-          this.errorMessage = 'Error registrando usuario. Por favor, inténtalo de nuevo.';
-        }
+      this.userService.createUser(user).subscribe(response => {
+        console.log('Usuario registrado:', response);
+        this.router.navigate(['/login']);
       });
     }
-  }
-
-  goToLogin() {
-    this.router.navigate(['/login']);
   }
 }

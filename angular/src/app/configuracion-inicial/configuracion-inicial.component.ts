@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { ToleranciaService } from '../tolerancia.service'; // Servicio para manejar las tolerancias
-import { ToleranciaStateService } from '../tolerancia-state.service'; // Servicio para mantener el estado de la tolerancia
-import { Tolerancia } from '../tolerancia';
+import { ToleranciaService } from '../services/tolerancia.service'; // Servicio para manejar las tolerancias
+import { ToleranciaStateService } from '../services/tolerancia-state.service'; // Servicio para mantener el estado de la tolerancia
+import { Tolerancia } from '../interfaces/tolerancia';
 import { FormsModule } from '@angular/forms';
 import { NgFor } from '@angular/common';
 

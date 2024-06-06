@@ -15,12 +15,15 @@ export class NavbarComponent implements OnInit {
 
   constructor(private router: Router) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   buscar(inputValue: string) {
     if (inputValue.trim() !== '') {
-      this.router.navigate(['/buscar-receta']);
+      this.router.navigate(['/buscar-receta'], { queryParams: { query: inputValue } });
     }
+  }
+
+  irAPerfil() {
+    this.router.navigate(['/perfil']);
   }
 }
