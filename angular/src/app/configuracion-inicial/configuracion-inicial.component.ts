@@ -1,44 +1,42 @@
-import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { ToleranciaService } from '../services/tolerancia.service'; // Servicio para manejar las tolerancias
+import { ToleranciaStateService } from '../services/tolerancia-state.service'; // Servicio para mantener el estado de la tolerancia
+import { Tolerancia } from '../interfaces/tolerancia';
 import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
-
-interface Elemento {
-  nombre: string;
-  seleccionado: boolean;
-}
+import { NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-configuracion-inicial',
   standalone: true,
-  imports: [NgFor, FormsModule, RouterModule],
   templateUrl: './configuracion-inicial.component.html',
-  styleUrl: './configuracion-inicial.component.css'
+  styleUrls: ['./configuracion-inicial.component.css'],
+  imports: [FormsModule, NgFor]
 })
 export class ConfiguracionInicialComponent {
-  preferenciaSeleccionada: string = '';
+  tolerancia: Tolerancia = {
+    idTolerancia: 0,
+    vegetarian: false,
+    vegan: false,
+    lowFodmap: false,
+    glutenFree: false,
+    dairyFree: false,
+    ketogenic: false,
+    cheap: false
+  };
 
-  preferencias: Elemento[] = [
-    { nombre: 'Vegetariano', seleccionado: false },
-    { nombre: 'Vegano', seleccionado: false },
-    { nombre: 'Omnívoro', seleccionado: false },
-    { nombre: 'Pisciactoria', seleccionado: false },
-  ];
+  constructor(
+    private router: Router,
+    private toleranciaService: ToleranciaService,
+    private toleranciaStateService: ToleranciaStateService
+  ) {}
 
-  alergias: Elemento[] = [
-    { nombre: 'Crustáceos', seleccionado: false },
-    { nombre: 'Pescado', seleccionado: false },
-    { nombre: 'Frutos secos', seleccionado: false },
-    { nombre: 'Lácteos', seleccionado: false },
-  ];
- 
-  hasSelection(): boolean {
-    return this.preferencias.some(p => p.seleccionado);
-}
-
-  onSelectionChange(elemento: Elemento): void {
-    elemento.seleccionado = !elemento.seleccionado;
+  continuar() {
+    this.toleranciaService.createTolerancia(this.tolerancia).subscribe(response => {
+      console.log('Tolerancia creada:', response);
+      // Guardar el ID de la tolerancia en el servicio de estado
+      this.toleranciaStateService.setToleranciaId(response.idTolerancia);
+      this.router.navigate(['/signup']);
+    });
   }
-
-
 }

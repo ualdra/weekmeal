@@ -4,6 +4,13 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ToleranciaStateService {
+  private toleranciaId: number=0;
 
-  constructor() { }
+  setToleranciaId(id: number): void {
+    this.toleranciaId = id;
+  }
+
+  getToleranciaId(): number {
+    return this.toleranciaId;
+  }
 }
