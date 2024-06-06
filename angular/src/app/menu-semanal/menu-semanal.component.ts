@@ -19,8 +19,14 @@ import { MenuSemanal } from '../models/menu.interfaces';
     NgIf  // Añadir NgFor a las importaciones
   ]
 })
+
+
+
 export class MenuSemanalComponent implements OnInit {
-  menuSemanal?: MenuSemanal;  // Indica que puede ser indefinido inicialmente
+  menuSemanal?: MenuSemanal;  // Define la variable usando la interfaz
+  readonly daysOfWeek: String[] =
+   ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'];
+
 
   constructor(private http: HttpClient) { }
 
@@ -28,9 +34,12 @@ export class MenuSemanalComponent implements OnInit {
     const idUsuario = 2;
     this.http.get<{menuSemanal: string}>(`http://localhost:8080/api/usuario/${idUsuario}`).subscribe(data => {
       this.menuSemanal = JSON.parse(data.menuSemanal);
-      console.log(this.menuSemanal);
     }, error => {
       console.error('Error al obtener los datos:', error);
     });
+  }
+
+  getImageUrl(id: number): string {
+    return `https://img.spoonacular.com/recipes/${id}-556x370.jpg`;
   }
 }

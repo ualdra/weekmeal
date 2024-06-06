@@ -1,12 +1,14 @@
-<div *ngIf="menuSemanal">
-    <div *ngFor="let day of menuSemanal?.week | keyvalue">
-      <h2>{{ day.key }}</h2>
-      <ul>
-        <li *ngFor="let meal of day.value.meals">
-          <img [src]="meal.sourceUrl" alt="{{ meal.title }}">
+<!-- Menú Semanal Componente -->
+<!-- Menú Semanal Componente -->
+<app-navbar></app-navbar>
+<div class="menu-semanal">
+    <div class="dia" *ngFor="let day of menuSemanal?.week | keyvalue; let i = index">
+      <h2>{{ daysOfWeek[i] }}</h2>
+      <div class="comidas">
+        <div class="comida" *ngFor="let meal of day.value.meals">
+          <img [src]="getImageUrl(meal.id)" alt="{{ meal.title }}">
           <p>{{ meal.title }}</p>
-        </li>
-      </ul>
+        </div>
+      </div>
     </div>
-  </div>
-  
+</div>
