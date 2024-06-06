@@ -119,6 +119,7 @@ export class RecetaInfoComponent implements OnInit {
 
   checkIfFavorite() {
     if (!this.currentUser || !this.receta) {
+      console.error('No se encontró el usuario actual o la receta');
       return;
     }
     this.recetaService.existsRecetaFav(this.currentUser.idUsuario!, this.receta.id).subscribe(
@@ -132,7 +133,23 @@ export class RecetaInfoComponent implements OnInit {
   }
 
   removeRecetaFav() {
-    // Implementar la lógica para eliminar la receta de los favoritos
+    if (!this.currentUser || !this.receta) {
+      console.error('No se encontró el usuario actual o la receta');
+      return;
+    }
+
+    console.log('Eliminando receta favorita:', this.receta.id);
+    console.log('Usuario actual:', this.currentUser.idUsuario);
+
+
+    this.recetaService.deleteRecetaFav(this.currentUser.idUsuario!, this.receta.id).subscribe(
+      () => {
+        console.log('Receta favorita eliminada');
+      },
+      error => {
+        console.error('Error al eliminar la receta favorita:', error);
+      }
+    );
   }
 
 }

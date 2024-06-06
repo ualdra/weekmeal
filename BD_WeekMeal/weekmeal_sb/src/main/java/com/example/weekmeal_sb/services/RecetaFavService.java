@@ -35,7 +35,8 @@ public class RecetaFavService {
         return recetaFavRepository.existsByUsuarioIdUsuarioAndRecetaIdReceta(idUsuario, idReceta);
     }
 
-    public void deleteRecetaFav(RecetaFavId id) {
+    public void deleteRecetaFavById(RecetaFavId id) {
         recetaFavRepository.deleteById(id);
     }
+
 }

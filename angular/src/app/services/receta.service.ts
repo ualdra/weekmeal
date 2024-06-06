@@ -62,4 +62,12 @@ export class RecetaService {
     return this.http.get<boolean>(`${this.recetasFavUrl}/exists?idUsuario=${idUsuario}&idReceta=${idReceta}`);
   }
 
+  deleteRecetaFav(idUsuario: number, idReceta: number): Observable<any> {
+    const url = `${this.recetasFavUrl}/${idUsuario}/${idReceta}`;
+    return this.http.delete(url, this.httpOptions).pipe(
+      catchError(this.handleError<any>('deleteRecetaFav'))
+    );
+  }
+
+
 }
