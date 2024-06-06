@@ -31,6 +31,11 @@ public class RecetaFavController {
         return recetaFavService.getAllRecetasFav();
     }
 
+    @GetMapping("/usuario/{idUsuario}")
+    public List<RecetaFav> getAllRecetasFavByUsuario(@PathVariable Long idUsuario) {
+        return recetaFavService.getAllRecetasFavByUsuario(idUsuario);
+    }
+
     @GetMapping("/{id}")
     public RecetaFav getRecetaFavById(@PathVariable RecetaFavId id) {
         return recetaFavService.getRecetaFavById(id);

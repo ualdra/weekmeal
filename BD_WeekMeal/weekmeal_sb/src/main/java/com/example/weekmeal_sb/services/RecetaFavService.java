@@ -27,6 +27,10 @@ public class RecetaFavService {
         return recetaFavRepository.findAll();
     }
 
+    public List<RecetaFav> getAllRecetasFavByUsuario(Long idUsuario) {
+        return recetaFavRepository.findAllByUsuarioIdUsuario(idUsuario);
+    }
+
     public RecetaFav getRecetaFavById(RecetaFavId id) {
         return recetaFavRepository.findById(id).orElse(null);
     }
