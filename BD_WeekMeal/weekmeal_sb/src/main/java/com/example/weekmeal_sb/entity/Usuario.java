@@ -1,9 +1,5 @@
 package com.example.weekmeal_sb.entity;
 
-import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -36,14 +32,7 @@ public class Usuario {
     @NotBlank
     private String apellidos;
 
-    @OneToOne
-    @JoinColumn(name = "idTolerancia")
-    private Tolerancia tolerancias;
-
     @OneToOne(mappedBy = "usuario")
     private Menu menu;
 
-    // @OneToMany(mappedBy = "usuario")
-    // @JsonManagedReference
-    // private List<RecetaFav> recetasFavoritas;
 }

@@ -1,5 +1,5 @@
 export interface Tolerancia {
-    idTolerancia: number;
+    idTolerancia?: number;
     vegetarian: boolean;
     vegan: boolean;
     lowFodmap: boolean;
@@ -7,4 +7,5 @@ export interface Tolerancia {
     dairyFree: boolean;
     ketogenic: boolean;
     cheap: boolean;
+    idUsuario?: number; 
 }

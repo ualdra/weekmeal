@@ -15,7 +15,6 @@ public class RecetaController {
     @Autowired
     private RecetaService recetaService;
 
-    
     @GetMapping
     public List<Receta> getAllRecetas() {
         return recetaService.getAllRecetas();

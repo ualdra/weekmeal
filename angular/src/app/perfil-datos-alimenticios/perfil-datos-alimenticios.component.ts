@@ -25,30 +25,30 @@ export class PerfilDatosAlimenticiosComponent implements OnInit {
       this.currentUser = user;
       console.log('Usuario actual en ngOnInit:', this.currentUser); // Depuración inicial
       if (this.currentUser) {
-        this.loadUser();
+        // this.loadUser();
       }
     });
   }
 
-  loadUser(): void {
-    const userId = this.currentUser!.idUsuario;
-    console.log('Cargando datos del usuario con ID:', userId); // Depuración de carga de usuario
-    this.userService.getUserById(userId!).subscribe(
-      data => {
-        console.log('Datos del usuario recibidos:', data);
-        this.currentUser = data;
-        if (this.currentUser.tolerancias) {
-          console.log('Tolerancias del usuario:', this.currentUser.tolerancias); // Depuración de tolerancias del usuario
-          this.loadTolerancias(this.currentUser.tolerancias.idTolerancia);
-        } else {
-          console.error('El usuario no tiene tolerancias asociadas');
-        }
-      },
-      error => {
-        console.error('Error al cargar los datos del usuario', error);
-      }
-    );
-  }
+  // loadUser(): void {
+  //   const userId = this.currentUser!.idUsuario;
+  //   console.log('Cargando datos del usuario con ID:', userId); // Depuración de carga de usuario
+  //   this.userService.getUserById(userId!).subscribe(
+  //     data => {
+  //       console.log('Datos del usuario recibidos:', data);
+  //       this.currentUser = data;
+  //       if (this.currentUser.tolerancias) {
+  //         console.log('Tolerancias del usuario:', this.currentUser.tolerancias); // Depuración de tolerancias del usuario
+  //         this.loadTolerancias(this.currentUser.tolerancias.idTolerancia);
+  //       } else {
+  //         console.error('El usuario no tiene tolerancias asociadas');
+  //       }
+  //     },
+  //     error => {
+  //       console.error('Error al cargar los datos del usuario', error);
+  //     }
+  //   );
+  // }
 
   loadTolerancias(idTolerancia: number): void {
     console.log('Cargando tolerancias con ID:', idTolerancia); // Depuración de carga de tolerancias

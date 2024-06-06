@@ -5,11 +5,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.example.weekmeal_sb.entity.Tolerancia;
 import com.example.weekmeal_sb.services.ToleranciaService;
 
+@RestController
+@RequestMapping("/tolerancia")
 public class ToleranciaController {
     
     @Autowired 
@@ -33,4 +36,10 @@ public class ToleranciaController {
     public void updateTolerancia(@PathVariable("idTolerancia") long idTolerancia, @RequestBody Tolerancia toleranciaDetails) {
         toleranciaService.updateTolerancia(idTolerancia, toleranciaDetails);
     }
+
+    @GetMapping("/usuario/{idUsuario}")
+    public Tolerancia getToleranciaByUserId(@PathVariable("idUsuario") long idUsuario) {
+        return toleranciaService.getToleranciaByUserId(idUsuario);
+    }
+
 }
