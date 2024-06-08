@@ -16,6 +16,26 @@
 
 }
 
+.button-container2 {
+  /*position: relative;*/
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  align-items: center;
+  /* Color de fondo deseado */
+  width: 20.5rem;
+  padding-left: 10px;
+  
+  border: 0px solid black;
+  border-bottom: 0px solid white;
+  /* Borde blanco de 2px de grosor en la parte inferior */
+  transition: transform 0.3s, box-shadow 0.3s;
+  /* Agregamos una transición suave */
+}
+
+
+
 .profile-button:hover {
   transform: scale(1.1);
   /* Hacemos el botón 10% más grande al pasar el ratón */
@@ -52,7 +72,21 @@
   transform: translateX(-50%);
   /* Centra la línea vertical */
 }
-
+.profile-button2 {
+  width: .5rem;
+  height: 2rem;
+  padding: 0px;
+  border-radius: 100%;
+  background-color: #ffffff;
+  /* Color de fondo deseado */
+  color: white;
+  /* Texto blanco */
+  font-weight: bold;
+  /* Fuente negrita */
+  /* Bordes redondeados */
+  cursor: pointer;
+  font-size: 20px;
+}
 
 .profile-button {
   width: 46%;

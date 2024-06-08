@@ -6,7 +6,7 @@ import { RecetaService } from '../services/receta.service';
 import { RecetaBackend } from '../interfaces/recetabackend';
 import { UserService } from '../services/user.service';
 import { User } from '../interfaces/user';
-import { RecetaFav } from '../interfaces/RecetaFav';
+import { RecetaFav } from '../interfaces/recetafav';
 
 @Component({
   selector: 'app-receta-info',

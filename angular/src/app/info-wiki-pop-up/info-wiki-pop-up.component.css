@@ -1,0 +1,12 @@
+.vertical-center {
+    margin: 0;
+    position: relative;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+  .right-center {
+    margin: 0;
+    position: relative;
+    -ms-transform: translateY(-100%);
+    transform: translateY(-100%);
+  }

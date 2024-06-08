@@ -4,22 +4,25 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { User } from '../interfaces/user';
+import { MatDialog, MatDialogRef, MatDialogActions, MatDialogClose, MatDialogContent} from '@angular/material/dialog';
 import { Tolerancia } from '../interfaces/tolerancia';
 import { UserService } from '../services/user.service';
 import { ToleranciaService } from '../services/tolerancia.service';
+import { MatButtonModule } from '@angular/material/button';
+import { InfoWikiPopUpComponent } from '../info-wiki-pop-up/info-wiki-pop-up.component';
 
 @Component({
   selector: 'app-perfil-datos-alimenticios',
   standalone: true,
   templateUrl: './perfil-datos-alimenticios.component.html',
   styleUrls: ['./perfil-datos-alimenticios.component.css'],
-  imports: [NavbarComponent, FormsModule, CommonModule, RouterModule]
+  imports: [NavbarComponent, FormsModule, CommonModule, RouterModule, MatButtonModule, MatDialogActions, MatDialogClose, MatDialogContent]
 })
 export class PerfilDatosAlimenticiosComponent implements OnInit {
   currentUser: User | null = null;
   tolerancia: Tolerancia | null = null;
 
-  constructor(private userService: UserService, private toleranciaService: ToleranciaService ) { }
+  constructor(private userService: UserService, private toleranciaService: ToleranciaService, private dialogRef: MatDialog) { }
 
   ngOnInit(): void {
     this.userService.currentUser.subscribe(user => {
@@ -60,5 +63,8 @@ export class PerfilDatosAlimenticiosComponent implements OnInit {
     } else {
       console.error('No hay tolerancias para guardar');
     }
+  }
+  openDialog(option: number) {
+    this.dialogRef.open(InfoWikiPopUpComponent, {data: {option: option}})
   }
 }

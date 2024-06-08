@@ -1,16 +1,19 @@
 import { Component } from '@angular/core';
 import { ToleranciaStateService } from '../services/tolerancia-state.service'; 
 import { Tolerancia } from '../interfaces/tolerancia';
-import { NgFor } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { InfoWikiPopUpComponent } from '../info-wiki-pop-up/info-wiki-pop-up.component';
+import { WIKI } from '../common/wikiEnum';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-configuracion-inicial',
   standalone: true,
   templateUrl: './configuracion-inicial.component.html',
   styleUrls: ['./configuracion-inicial.component.css'],
-  imports: [FormsModule]
+  imports: [FormsModule, MatButtonModule]
 })
 export class ConfiguracionInicialComponent {
 
@@ -26,12 +29,17 @@ export class ConfiguracionInicialComponent {
 
   constructor(
     private router: Router,
-    private toleranciaStateService: ToleranciaStateService
+    private toleranciaStateService: ToleranciaStateService,
+    private dialogRef: MatDialog
   ) {}
 
   continuar() {
     this.toleranciaStateService.setTolerancia(this.tolerancia);
     console.log('Tolerancia guardada:', this.toleranciaStateService.getTolerancia());
     this.router.navigate(['/signup']);
+  }
+
+  openDialog(option: number) {
+    this.dialogRef.open(InfoWikiPopUpComponent, {data: {option: option}})
   }
 }
