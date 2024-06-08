@@ -9,41 +9,61 @@
     border-radius: 10px;
     margin: auto;
     position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
+
+.profile-button2 {
+    width: 2rem;
+    height: 2rem;
+    padding: 0px;
+    border-radius: 100%;
+    background-color: #ffffff;
+    /* Color de fondo deseado */
+    color: black;
+    /* Texto blanco */
+    font-weight: bold;
+    /* Fuente negrita */
+    /* Bordes redondeados */
+    cursor: pointer;
+    font-size: 20px;
+  }
 
 .configuracion {
     width: 60%;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     margin-bottom: 4%;
     margin-right: 4%;
+    align-items: flex-start; /* Asegura que los elementos se alineen desde la parte superior */
 }
 
 .list {
     flex-direction: column;
-    margin-right: 20px;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
 }
 
 .list h2 {
     color: white;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     text-align: center;
 }
 
 .options {
     background-color: white;
     border-radius: 10px;
-    padding: 20px 50px 100px 20px;
+    padding: 20px;
     box-shadow: 1px 1px 8px var(--verde-claro); 
     font-size: 1.1em;
+    width: 250px; /* Ajustar el ancho para mejor alineación */
+    min-height: 250px; /* Establecer una altura mínima para asegurar que los recuadros sean iguales */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Asegura que el contenido se distribuya de manera uniforme */
 }
 
 .options > * {
@@ -52,20 +72,29 @@
 
 .boton {
     background-color: var(--verde-claro);
+    margin-right: 40px;
     color: #fff;
-    padding: 10px 30px;
+    padding: 10px 20px;
     border-radius: 10px;
     border: none;
     cursor: pointer;
     font-size: 1.2em;
     width: auto;
-    position: absolute;
-    bottom: -20px;
-    left: 50%;
-    transform: translateX(-50%);
+    position: center;
+    margin-top: 20px; /* Añadir margen para separar del contenedor */ /* Alinear con los recuadros */
 }
 
 .boton[disabled] {
-  filter: brightness(85%);
-  cursor: not-allowed;
+    filter: brightness(85%);
+    cursor: not-allowed;
+}
+
+.radio-custom-label, .checkbox-custom-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.radio-custom, .checkbox-custom {
+    margin-right: 10px; /* Añadir espacio entre el input y el texto */
 }

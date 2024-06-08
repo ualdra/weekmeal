@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
-import { UserService } from '../user.service';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
-import { User } from '../user';
+import { User } from '../interfaces/user';
+import { UserService } from '../services/user.service';
+import { Tolerancia } from '../interfaces/tolerancia';
+import { ToleranciaService } from '../services/tolerancia.service';
+import { ToleranciaStateService } from '../services/tolerancia-state.service';
 
 @Component({
   selector: 'app-registro',
@@ -17,7 +18,7 @@ import { User } from '../user';
 export class RegistroComponent {
   registroForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router) {
+  constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router, private toleranciaStateService: ToleranciaStateService, private toleranciaService: ToleranciaService) {
     this.registroForm = this.formBuilder.group({
       nombre: ['', Validators.required],
       apellidos: ['', Validators.required],
@@ -38,11 +39,16 @@ export class RegistroComponent {
         telefono: formValue.telefono,
         username: formValue.username,
         password: formValue.password,
-        tolerancias: undefined,
       };
-      this.userService.createUser(user).subscribe(response => {
-        console.log('Usuario registrado:', response);
-        this.router.navigate(['/login']);
+      
+      this.userService.createUser(user).subscribe(newUser => {
+        console.log('Usuario registrado:', newUser);
+        const tolerancia: Tolerancia = this.toleranciaStateService.getTolerancia();
+        tolerancia.idUsuario = newUser.idUsuario!;
+        this.toleranciaService.createTolerancia(tolerancia).subscribe(() => {
+          console.log('Usuario y Tolerancia creados');
+          this.router.navigate(['/login']);
+        });
       });
     }
   }

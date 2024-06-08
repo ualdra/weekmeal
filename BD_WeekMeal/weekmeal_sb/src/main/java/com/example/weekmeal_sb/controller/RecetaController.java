@@ -15,7 +15,6 @@ public class RecetaController {
     @Autowired
     private RecetaService recetaService;
 
-    
     @GetMapping
     public List<Receta> getAllRecetas() {
         return recetaService.getAllRecetas();
@@ -24,6 +23,11 @@ public class RecetaController {
     @GetMapping("/{id}")
     public Optional<Receta> getRecetaById(@PathVariable long id) {
         return recetaService.getRecetaById(id);
+    }
+
+    @GetMapping("/nombre/{nombre}")
+    public Optional<Receta> getRecetaByNombre(@PathVariable String nombre) {
+        return recetaService.getRecetaByNombre(nombre);
     }
 
     @PostMapping

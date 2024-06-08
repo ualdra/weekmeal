@@ -1,62 +1,46 @@
 import { Component, OnInit } from '@angular/core';
 import { NavbarComponent } from "../navbar/navbar.component";
-import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { User } from '../user';
-import { Tolerancia } from '../tolerancia';
-import { UserService } from '../user.service';
+import { User } from '../interfaces/user';
+import { MatDialog, MatDialogRef, MatDialogActions, MatDialogClose, MatDialogContent} from '@angular/material/dialog';
+import { Tolerancia } from '../interfaces/tolerancia';
+import { UserService } from '../services/user.service';
+import { ToleranciaService } from '../services/tolerancia.service';
+import { MatButtonModule } from '@angular/material/button';
+import { InfoWikiPopUpComponent } from '../info-wiki-pop-up/info-wiki-pop-up.component';
 
 @Component({
   selector: 'app-perfil-datos-alimenticios',
   standalone: true,
   templateUrl: './perfil-datos-alimenticios.component.html',
   styleUrls: ['./perfil-datos-alimenticios.component.css'],
-  imports: [NavbarComponent, FormsModule, CommonModule, RouterModule]
+  imports: [NavbarComponent, FormsModule, CommonModule, RouterModule, MatButtonModule, MatDialogActions, MatDialogClose, MatDialogContent]
 })
 export class PerfilDatosAlimenticiosComponent implements OnInit {
   currentUser: User | null = null;
   tolerancia: Tolerancia | null = null;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private toleranciaService: ToleranciaService, private dialogRef: MatDialog) { }
 
   ngOnInit(): void {
     this.userService.currentUser.subscribe(user => {
       this.currentUser = user;
       console.log('Usuario actual en ngOnInit:', this.currentUser); // Depuración inicial
       if (this.currentUser) {
-        this.loadUser();
+        this.loadTolerancias();
       }
     });
   }
 
-  loadUser(): void {
-    const userId = this.currentUser!.idUsuario;
-    console.log('Cargando datos del usuario con ID:', userId); // Depuración de carga de usuario
-    this.userService.getUserById(userId!).subscribe(
-      data => {
-        console.log('Datos del usuario recibidos:', data);
-        this.currentUser = data;
-        if (this.currentUser.tolerancias) {
-          console.log('Tolerancias del usuario:', this.currentUser.tolerancias); // Depuración de tolerancias del usuario
-          this.loadTolerancias(this.currentUser.tolerancias.idTolerancia);
-        } else {
-          console.error('El usuario no tiene tolerancias asociadas');
-        }
-      },
-      error => {
-        console.error('Error al cargar los datos del usuario', error);
-      }
-    );
-  }
+  loadTolerancias(): void {
 
-  loadTolerancias(idTolerancia: number): void {
-    console.log('Cargando tolerancias con ID:', idTolerancia); // Depuración de carga de tolerancias
-    this.userService.getUserTolerancias(idTolerancia).subscribe(
+    this.toleranciaService.getToleranciaByUserId(this.currentUser!.idUsuario!).subscribe(
       data => {
         console.log('Datos de las tolerancias recibidos:', data);
-        this.tolerancia = { ...data, idTolerancia }; // Asigna manualmente el idTolerancia
-        console.log('ID de tolerancia recibido:', this.tolerancia.idTolerancia); // Verificación del ID de tolerancia
+        this.tolerancia = data;
+        console.log('Tolerancia después de asignación:', this.tolerancia);
       },
       error => {
         console.error('Error al cargar las tolerancias del usuario', error);
@@ -79,5 +63,8 @@ export class PerfilDatosAlimenticiosComponent implements OnInit {
     } else {
       console.error('No hay tolerancias para guardar');
     }
+  }
+  openDialog(option: number) {
+    this.dialogRef.open(InfoWikiPopUpComponent, {data: {option: option}})
   }
 }

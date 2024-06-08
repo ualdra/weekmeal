@@ -1,28 +1,23 @@
 <app-navbar></app-navbar>
 
 <div class="container"> 
-    <div class="botones">
-        <button class="recomendaciones">Recomendaciones</button>
-        <button class="favoritos">Favoritos</button>
-        
-    </div>
-    
     <div class="resultados">
-        <a *ngFor="let i of paginaResultado()" class="card" routerLink="/receta-detalle/{{715538}}"> 
-            <!-- Cambiar el id por el de la receta -->
-            <div class="imagen">
-                <img src="assets/v-inicio.png" class="card-img-top" alt="...">
-            </div>
-            <h5 class="card-title">Nombre de la receta</h5>
-        </a>
-        
-    </div>
-    <div>
-        <button (click)="nextPage()" class="buttonNext">Siguiente</button>
-        <button class="inbetweenText">{{pag+1}}/{{maxPag+1}}</button>
-        <button (click)="previousPage()" class="buttonPrevious">Anterior</button>    
-    </div>
-    <div *ngIf="resultados === 0" class="no-resultados">
-        <h1>No se encontraron resultados</h1>
-    </div>
+        <div class="recetas">
+            <a *ngFor="let i of paginaResultado()" class="card" [routerLink]="'/receta-detalle/' + recetasFav[i].receta.idReceta"> 
+                <div class="imagen">
+                    <img [src]="recetasFav[i].receta.imagen" class="card-img-top" alt="{{ recetasFav[i].receta.nombre }}">
+                </div>
+                <h5 class="card-title">{{ recetasFav[i].receta.nombre }}</h5>
+            </a>
+            <div *ngIf="recetasFav.length === 0" class="no-resultados">
+                <h1>No se encontraron resultados</h1>
+            </div> 
+        </div>
+        <div>
+            <button (click)="nextPage()" class="buttonNext">Siguiente</button>
+            <button class="inbetweenText">{{ pag + 1 }}/{{ maxPag + 1 }}</button>
+            <button (click)="previousPage()" class="buttonPrevious">Anterior</button>    
+        </div>
+    </div> 
 </div>
+ 

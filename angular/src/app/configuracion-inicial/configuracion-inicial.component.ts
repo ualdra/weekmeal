@@ -1,44 +1,45 @@
-import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
+import { ToleranciaStateService } from '../services/tolerancia-state.service'; 
+import { Tolerancia } from '../interfaces/tolerancia';
 import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
-
-interface Elemento {
-  nombre: string;
-  seleccionado: boolean;
-}
+import { Router } from '@angular/router';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { InfoWikiPopUpComponent } from '../info-wiki-pop-up/info-wiki-pop-up.component';
+import { WIKI } from '../common/wikiEnum';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-configuracion-inicial',
   standalone: true,
-  imports: [NgFor, FormsModule, RouterModule],
   templateUrl: './configuracion-inicial.component.html',
-  styleUrl: './configuracion-inicial.component.css'
+  styleUrls: ['./configuracion-inicial.component.css'],
+  imports: [FormsModule, MatButtonModule]
 })
 export class ConfiguracionInicialComponent {
-  preferenciaSeleccionada: string = '';
 
-  preferencias: Elemento[] = [
-    { nombre: 'Vegetariano', seleccionado: false },
-    { nombre: 'Vegano', seleccionado: false },
-    { nombre: 'Omnívoro', seleccionado: false },
-    { nombre: 'Pisciactoria', seleccionado: false },
-  ];
+  tolerancia: Tolerancia = {
+    vegetarian: false,
+    vegan: false,
+    lowFodmap: false,
+    glutenFree: false,
+    dairyFree: false,
+    ketogenic: false,
+    cheap: false,
+  };
 
-  alergias: Elemento[] = [
-    { nombre: 'Crustáceos', seleccionado: false },
-    { nombre: 'Pescado', seleccionado: false },
-    { nombre: 'Frutos secos', seleccionado: false },
-    { nombre: 'Lácteos', seleccionado: false },
-  ];
- 
-  hasSelection(): boolean {
-    return this.preferencias.some(p => p.seleccionado);
-}
+  constructor(
+    private router: Router,
+    private toleranciaStateService: ToleranciaStateService,
+    private dialogRef: MatDialog
+  ) {}
 
-  onSelectionChange(elemento: Elemento): void {
-    elemento.seleccionado = !elemento.seleccionado;
+  continuar() {
+    this.toleranciaStateService.setTolerancia(this.tolerancia);
+    console.log('Tolerancia guardada:', this.toleranciaStateService.getTolerancia());
+    this.router.navigate(['/signup']);
   }
 
-
+  openDialog(option: number) {
+    this.dialogRef.open(InfoWikiPopUpComponent, {data: {option: option}})
+  }
 }
