@@ -21,11 +21,11 @@ public class MealController {
         this.externalApiService = externalApiService;
     }
 
-    @GetMapping("/meals")
-    public ResponseEntity<String> getMeals(@RequestParam String query) { // Obtener la 'query' como parámetro
-        String weeklyMenu = externalApiService.getWeeklyMenu(query);
-        return ResponseEntity.ok(weeklyMenu);
-    }
+    // @GetMapping("/meals")
+    // public ResponseEntity<String> getMeals(@RequestParam String query) { // Obtener la 'query' como parámetro
+    //     String weeklyMenu = externalApiService.getWeeklyMenu(query);
+    //     return ResponseEntity.ok(weeklyMenu);
+    // }
 
     @GetMapping("/meal")
     public ResponseEntity<String> getMeal(@RequestParam String query) { // Obtener la 'query' como parámetro

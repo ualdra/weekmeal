@@ -31,6 +31,14 @@ public class Usuario {
     private String nombre;
     @NotBlank
     private String apellidos;
+  
+    @Lob
+    @Column(name = "menu_semanal", columnDefinition = "TEXT")
+    private String menuSemanal;
+
+    @OneToOne
+    @JoinColumn(name = "idTolerancia")
+    private Tolerancia tolerancias;
 
     @OneToOne(mappedBy = "usuario")
     private Menu menu;

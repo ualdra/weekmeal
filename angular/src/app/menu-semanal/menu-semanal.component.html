@@ -1,9 +1,14 @@
+<!-- Menú Semanal Componente -->
+<!-- Menú Semanal Componente -->
 <app-navbar></app-navbar>
 <div class="menu-semanal">
-    <h1>Menú Semanal</h1>
-    <div class="menu">
-        <div class="columna-semanal" *ngFor="let dia of [0, 1, 2, 3, 4, 5, 6]">
-            <app-columna-dia [diaSemana]="dia"></app-columna-dia>
+    <div class="dia" *ngFor="let day of menuSemanal?.week | keyvalue; let i = index">
+      <h2>{{ daysOfWeek[i] }}</h2>
+      <div class="comidas">
+        <div class="comida" *ngFor="let meal of day.value.meals">
+          <img [src]="getImageUrl(meal.id)" alt="{{ meal.title }}">
+          <p>{{ meal.title }}</p>
         </div>
+      </div>
     </div>
 </div>

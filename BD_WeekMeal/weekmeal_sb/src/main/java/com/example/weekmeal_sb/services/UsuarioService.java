@@ -3,14 +3,21 @@ package com.example.weekmeal_sb.services;
 import java.util.List;
 import com.example.weekmeal_sb.entity.Usuario;
 import com.example.weekmeal_sb.repository.UsuarioRepository;
+
+import jakarta.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Service
 public class UsuarioService {
 
     @Autowired
     private UsuarioRepository usuarioRepository;
+
+    private static final Logger log = LoggerFactory.getLogger(UsuarioService.class);
 
     public List<Usuario> getAllUsers() {
         return usuarioRepository.findAll();
@@ -44,12 +51,18 @@ public class UsuarioService {
         usuarioRepository.deleteById(id);
     }
 
+    @Transactional
     public Usuario login(Usuario user) {
-        Usuario existingUser = usuarioRepository.findByUsername(user.getUsername());
-        if (existingUser != null && existingUser.getPassword().equals(user.getPassword())) {
-            return existingUser;
-        } else {
-            return null;
+        try {
+            Usuario existingUser = usuarioRepository.findByUsername(user.getUsername());
+            if (existingUser != null && existingUser.getPassword().equals(user.getPassword())) {
+                return existingUser;
+            }
+        } catch (Exception e) {
+            // Log the exception
+            log.error("Error during login", e);
         }
+        return null;
     }
+    
 }

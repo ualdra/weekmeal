@@ -21,23 +21,21 @@ public class ExternalApiService {
         this.restTemplate = restTemplate;
     }
 
-    public String getWeeklyMenu(String query) { // Añade el parámetro de consulta necesario
+    public String getWeeklyMenu() {
         try {
-            String endpoint = "/recipes/complexSearch";
-            // Añade el parámetro de búsqueda 'query' como en tu ejemplo de Postman
-            String queryParams = "?apiKey=" + apiKey + "&query=" + query;
-
+            String endpoint = "/mealplanner/generate";
+            String queryParams = "?apiKey=" + apiKey;
             URI uri = new URI(apiBaseUrl + endpoint + queryParams);
             return restTemplate.getForObject(uri, String.class);
         } catch (URISyntaxException e) {
-            throw new RuntimeException("Error al construir la URI", e);
+            throw new RuntimeException("Error constructing the URI", e);
         }
     }
 
     public String getRecipe(String query) { // Añade el parámetro de consulta necesario
         try {
             String endpoint = "/recipes/" + query;
-            String queryParams = "/information?apiKey=" + apiKey + "&includeNutrition=true" ;
+            String queryParams = "/information?apiKey=" + apiKey + "&includeNutrition=true";
             URI uri = new URI(apiBaseUrl + endpoint + queryParams);
             return restTemplate.getForObject(uri, String.class);
         } catch (URISyntaxException e) {
