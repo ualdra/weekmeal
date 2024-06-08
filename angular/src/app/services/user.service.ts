@@ -12,7 +12,8 @@ export class UserService {
   private currentUserSubject: BehaviorSubject<User | null>;
 
   constructor(private http: HttpClient) {
-    this.currentUserSubject = new BehaviorSubject<User | null>(null);
+    const storedUser = localStorage.getItem('currentUser');
+    this.currentUserSubject = new BehaviorSubject<User | null>(storedUser ? JSON.parse(storedUser) : null);
   }
 
   get currentUser(): Observable<User | null> {
@@ -21,6 +22,11 @@ export class UserService {
 
   setCurrentUser(user: User | null) {
     this.currentUserSubject.next(user);
+    if (user) {
+      localStorage.setItem('currentUser', JSON.stringify(user));
+    } else {
+      localStorage.removeItem('currentUser');
+    }
   }
 
   createUser(user: User): Observable<User> {

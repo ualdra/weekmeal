@@ -5,27 +5,33 @@
         <div class="options">
           <label class="checkbox-custom-label">
             <input type="checkbox" [(ngModel)]="tolerancia.vegetarian" class="checkbox-custom">
-            Vegetariano
+            Vegetariano&nbsp;
+            <button class='profile-button2' (click)="openDialog(0)">i</button>
           </label>
           <label class="checkbox-custom-label">
             <input type="checkbox" [(ngModel)]="tolerancia.vegan" class="checkbox-custom">
-            Vegano
+            Vegano&nbsp;
+            <button class='profile-button2' (click)="openDialog(1)">i</button>
           </label>
           <label class="checkbox-custom-label">
             <input type="checkbox" [(ngModel)]="tolerancia.lowFodmap" class="checkbox-custom">
-            Low FODMAP
+            Low FODMAP&nbsp;
+            <button class='profile-button2' (click)="openDialog(2)">i</button>
           </label>
           <label class="checkbox-custom-label">
             <input type="checkbox" [(ngModel)]="tolerancia.glutenFree" class="checkbox-custom">
-            Sin Gluten
+            Sin Gluten&nbsp;
+            <button class='profile-button2' (click)="openDialog(5)">i</button>
           </label>
           <label class="checkbox-custom-label">
             <input type="checkbox" [(ngModel)]="tolerancia.dairyFree" class="checkbox-custom">
-            Sin Lácteos
+            Sin Lácteos&nbsp;
+              <button class='profile-button2' (click)="openDialog(4)">i</button>
           </label>
           <label class="checkbox-custom-label">
             <input type="checkbox" [(ngModel)]="tolerancia.ketogenic" class="checkbox-custom">
-            Cetogénico
+            Cetogénico&nbsp;
+            <button class='profile-button2' (click)="openDialog(3)">i</button>
           </label>
           <label class="checkbox-custom-label">
             <input type="checkbox" [(ngModel)]="tolerancia.cheap" class="checkbox-custom">

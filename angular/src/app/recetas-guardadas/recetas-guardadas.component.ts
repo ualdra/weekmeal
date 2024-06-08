@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { RouterModule } from '@angular/router';
 import { RecetaService } from '../services/receta.service';
-import { RecetaFav } from '../interfaces/RecetaFav';
+import { RecetaFav } from '../interfaces/recetafav';
 import { UserService } from '../services/user.service';
 import { User } from '../interfaces/user';
 

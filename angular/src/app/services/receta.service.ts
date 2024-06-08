@@ -5,7 +5,7 @@ import { Observable, of, throwError } from 'rxjs';
 import { catchError, map, switchMap, tap } from 'rxjs/operators';
 
 import { Receta } from '../interfaces/receta';
-import { RecetaFav } from '../interfaces/RecetaFav';
+import { RecetaFav } from '../interfaces/recetafav';
 import { RecetaBackend } from '../interfaces/recetabackend';
 
 @Injectable({

@@ -14,6 +14,22 @@
     transform: translate(-50%, -50%);
 }
 
+.profile-button2 {
+    width: 2rem;
+    height: 2rem;
+    padding: 0px;
+    border-radius: 100%;
+    background-color: #ffffff;
+    /* Color de fondo deseado */
+    color: black;
+    /* Texto blanco */
+    font-weight: bold;
+    /* Fuente negrita */
+    /* Bordes redondeados */
+    cursor: pointer;
+    font-size: 20px;
+  }
+
 .configuracion {
     width: 60%;
     display: flex;
