@@ -1,7 +1,5 @@
 package com.example.weekmeal_sb.entity;
 
-import java.util.List;
-
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -20,7 +18,6 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long idUsuario;
 
-    private String foto;
     @NotBlank
     private String username;
     @NotBlank
@@ -34,14 +31,8 @@ public class Usuario {
     private String nombre;
     @NotBlank
     private String apellidos;
-    
-    @OneToOne
-    @JoinColumn(name = "idTolerancia")
-    private Tolerancia tolerancias;
 
     @OneToOne(mappedBy = "usuario")
     private Menu menu;
 
-    @OneToMany(mappedBy = "usuario")
-    private List<RecetaFav> recetasFavoritas;
 }

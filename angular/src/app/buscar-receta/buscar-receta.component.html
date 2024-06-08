@@ -1,19 +1,18 @@
 <app-navbar></app-navbar>
 
-<div class="container"> 
-    <div class="botones">
-        <button class="recomendaciones">Recomendaciones</button>
-        <button class="favoritos">Favoritos</button>
+<div class="container">
+    <div class="titulo">
+        <h2>Resultados para "{{ query }}"</h2>
     </div>
     <div class="resultados">
-        <a *ngFor="let i of arrayFromNumber(resultados)" class="card" routerLink="/receta-detalle">
+        <a *ngFor="let receta of resultados" class="card" [routerLink]="['/receta-detalle', receta.id]">
             <div class="imagen">
-                <img src="assets/v-inicio.png" class="card-img-top" alt="...">
+                <img [src]="receta.image" class="card-img-top" alt="{{receta.title}}">
             </div>
-            <h5 class="card-title">Nombre de la receta</h5>
+            <h5 class="card-title">{{receta.title}}</h5>
         </a>
     </div>
-    <div *ngIf="resultados === 0" class="no-resultados">
+    <div *ngIf="resultados.length === 0" class="no-resultados">
         <h1>No se encontraron resultados</h1>
     </div>
 </div>

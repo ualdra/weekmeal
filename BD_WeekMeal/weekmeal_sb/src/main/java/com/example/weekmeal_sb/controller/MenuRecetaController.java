@@ -10,9 +10,6 @@ import com.example.weekmeal_sb.services.MenuRecetaService;
 
 import java.util.List;
 
-
-
-
 @RestController
 @RequestMapping("/menu-recetas")
 public class MenuRecetaController {

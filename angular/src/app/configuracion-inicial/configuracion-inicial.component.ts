@@ -1,44 +1,37 @@
-import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
+import { ToleranciaStateService } from '../services/tolerancia-state.service'; 
+import { Tolerancia } from '../interfaces/tolerancia';
+import { NgFor } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
-
-interface Elemento {
-  nombre: string;
-  seleccionado: boolean;
-}
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-configuracion-inicial',
   standalone: true,
-  imports: [NgFor, FormsModule, RouterModule],
   templateUrl: './configuracion-inicial.component.html',
-  styleUrl: './configuracion-inicial.component.css'
+  styleUrls: ['./configuracion-inicial.component.css'],
+  imports: [FormsModule]
 })
 export class ConfiguracionInicialComponent {
-  preferenciaSeleccionada: string = '';
 
-  preferencias: Elemento[] = [
-    { nombre: 'Vegetariano', seleccionado: false },
-    { nombre: 'Vegano', seleccionado: false },
-    { nombre: 'Omnívoro', seleccionado: false },
-    { nombre: 'Pisciactoria', seleccionado: false },
-  ];
+  tolerancia: Tolerancia = {
+    vegetarian: false,
+    vegan: false,
+    lowFodmap: false,
+    glutenFree: false,
+    dairyFree: false,
+    ketogenic: false,
+    cheap: false,
+  };
 
-  alergias: Elemento[] = [
-    { nombre: 'Crustáceos', seleccionado: false },
-    { nombre: 'Pescado', seleccionado: false },
-    { nombre: 'Frutos secos', seleccionado: false },
-    { nombre: 'Lácteos', seleccionado: false },
-  ];
- 
-  hasSelection(): boolean {
-    return this.preferencias.some(p => p.seleccionado);
-}
+  constructor(
+    private router: Router,
+    private toleranciaStateService: ToleranciaStateService
+  ) {}
 
-  onSelectionChange(elemento: Elemento): void {
-    elemento.seleccionado = !elemento.seleccionado;
+  continuar() {
+    this.toleranciaStateService.setTolerancia(this.tolerancia);
+    console.log('Tolerancia guardada:', this.toleranciaStateService.getTolerancia());
+    this.router.navigate(['/signup']);
   }
-
-
 }
