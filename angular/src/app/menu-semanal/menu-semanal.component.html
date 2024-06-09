@@ -1,6 +1,5 @@
-<!-- Menú Semanal Componente -->
-<!-- Menú Semanal Componente -->
 <app-navbar></app-navbar>
+<div class="boton"><button (click)="generateNewWeeklyMenu()">Generar nuevo menú semanal</button></div>
 <div class="menu-semanal">
     <div class="dia" *ngFor="let day of menuSemanal?.week | keyvalue; let i = index">
       <h2>{{ daysOfWeek[i] }}</h2>

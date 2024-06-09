@@ -12,8 +12,12 @@ export class UserService {
   private currentUserSubject: BehaviorSubject<User | null>;
 
   constructor(private http: HttpClient) {
-    const storedUser = localStorage.getItem('currentUser');
-    this.currentUserSubject = new BehaviorSubject<User | null>(storedUser ? JSON.parse(storedUser) : null);
+    if (typeof window !== 'undefined') {  // Asegúrate de que solo se accede a localStorage en el cliente
+      const storedUser = localStorage.getItem('currentUser');
+      this.currentUserSubject = new BehaviorSubject<User | null>(storedUser ? JSON.parse(storedUser) : null);
+    } else {
+      this.currentUserSubject = new BehaviorSubject<User | null>(null);
+    }
   }
 
   get currentUser(): Observable<User | null> {

@@ -10,6 +10,35 @@
   max-width: 100%; /* Uso del 100% del ancho de la pantalla */
 }
 
+/* Archivo: src/app/menu-semanal/menu-semanal.component.css */
+
+button {
+  background-color: #4CAF50; /* Color de fondo verde */
+  color: white; /* Texto blanco */
+  padding: 15px 19px; /* Espaciado interno */
+  text-align: center; /* Alineación del texto */
+  text-decoration: none; /* Sin subrayado */
+  display: inline-block; /* Asegura que el botón no tome toda la línea */
+  font-size: 16px; /* Tamaño del texto */
+  margin-top: 20px; /* Margen alrededor del botón */
+  margin-left: 30px;
+  cursor: pointer; /* Cambia el cursor a una mano cuando se pasa por encima */
+  border: none; /* Sin bordes */
+  border-radius: 8px; /* Bordes redondeados */
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /* Transición suave */
+  font-family: 'Roboto', sans-serif; /* Fuente de Google */
+}
+
+button:hover {
+  background-color: #45a049; /* Color de fondo más oscuro al pasar el ratón */
+}
+
+button:active {
+  background-color: #3e8e41; /* Color de fondo al hacer clic */
+  transform: translateY(4px); /* Mueve ligeramente el botón hacia abajo al hacer clic */
+}
+
+
 .dia {
   flex: 1 0 12%; /* Flexibilidad con base mínima del 12% del contenedor */
   display: flex;

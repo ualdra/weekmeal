@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { UserService } from '../services/user.service';
 import { SafeUrlPipe } from '../pipes/safe-url.pipe';
 import { NavbarComponent } from '../navbar/navbar.component';
-import { TitleCasePipe, KeyValuePipe, NgFor, NgIf } from '@angular/common';  // Importar NgFor aquí
+import { TitleCasePipe, KeyValuePipe, NgFor, NgIf } from '@angular/common';
 import { MenuSemanal } from '../models/menu.interfaces';
 
 @Component({
@@ -16,27 +17,57 @@ import { MenuSemanal } from '../models/menu.interfaces';
     TitleCasePipe, 
     KeyValuePipe,
     NgFor,
-    NgIf  // Añadir NgFor a las importaciones
+    NgIf
   ]
 })
-
-
-
 export class MenuSemanalComponent implements OnInit {
-  menuSemanal?: MenuSemanal;  // Define la variable usando la interfaz
-  readonly daysOfWeek: String[] =
-   ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'];
+  menuSemanal?: MenuSemanal;
+  readonly daysOfWeek: String[] = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'];
 
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private userService: UserService) { }
 
   ngOnInit() {
-    const idUsuario = 2;
+    this.userService.currentUser.subscribe(user => {
+      if (user && user.idUsuario !== undefined) {
+        console.log('Usuario actual:', user);
+        this.loadMenu(user.idUsuario);
+      } else {
+        console.log('No hay usuario autenticado o el ID del usuario no está definido');
+      }
+    }, error => {
+      console.error('Error al obtener el usuario actual:', error);
+    });
+  }
+
+  loadMenu(idUsuario: number) {
     this.http.get<{menuSemanal: string}>(`http://localhost:8080/api/usuario/${idUsuario}`).subscribe(data => {
       this.menuSemanal = JSON.parse(data.menuSemanal);
+      if (!this.menuSemanal) { // Verifica si menuSemanal es null
+        this.requestNewMenu(idUsuario); // Llama a otra función que maneja la nueva solicitud y recarga
+      }
     }, error => {
-      console.error('Error al obtener los datos:', error);
+      console.error('Error al obtener los datos del menú:', error);
     });
+  }
+
+  requestNewMenu(idUsuario: number) {
+    this.http.get(`http://localhost:8080/api/usuario/menu-semanal/${idUsuario}`).subscribe(() => {
+      console.log('Menú semanal actualizado');
+      window.location.reload(); // Recarga la página para reflejar los cambios
+    }, error => {
+      console.error('Error al solicitar el nuevo menú:', error);
+    });
+  }
+
+  generateNewWeeklyMenu() {
+    this.userService.currentUser.subscribe(user => {
+      if (user && user.idUsuario !== undefined) {
+        this.requestNewMenu(user.idUsuario);
+      } else {
+        console.error('No hay usuario autenticado o el ID del usuario no está definido');
+      }
+    });
+
   }
 
   getImageUrl(id: number): string {
