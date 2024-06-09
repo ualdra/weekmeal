@@ -1,13 +1,17 @@
+<!-- Asumiendo que este es el archivo menu-semanal.component.html -->
 <app-navbar></app-navbar>
-<div class="boton"><button (click)="generateNewWeeklyMenu()">Generar nuevo menú semanal</button></div>
+<div class="boton">
+    <button (click)="generateNewWeeklyMenu()">Generar nuevo menú semanal</button>
+</div>
 <div class="menu-semanal">
     <div class="dia" *ngFor="let day of menuSemanal?.week | keyvalue; let i = index">
-      <h2>{{ daysOfWeek[i] }}</h2>
-      <div class="comidas">
-        <div class="comida" *ngFor="let meal of day.value.meals">
-          <img [src]="getImageUrl(meal.id)" alt="{{ meal.title }}">
-          <p>{{ meal.title }}</p>
+        <h2>{{ daysOfWeek[i] }}</h2>
+        <div class="comidas">
+            <div class="comida" *ngFor="let meal of day.value.meals">
+                <img [src]="getImageUrl(meal.id)" alt="{{ meal.title }}">
+                <!-- Agregando enlace externo a Spoonacular -->
+                <p><a href="{{ meal.sourceUrl }}" target="_blank">{{ meal.title }}</a></p>
+            </div>
         </div>
-      </div>
     </div>
 </div>

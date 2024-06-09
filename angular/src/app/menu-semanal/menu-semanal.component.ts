@@ -5,6 +5,8 @@ import { SafeUrlPipe } from '../pipes/safe-url.pipe';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { TitleCasePipe, KeyValuePipe, NgFor, NgIf } from '@angular/common';
 import { MenuSemanal } from '../models/menu.interfaces';
+import { MenuDiaComponent } from '../menu-dia/menu-dia.component';
+import { Routes, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-menu-semanal',
@@ -20,6 +22,7 @@ import { MenuSemanal } from '../models/menu.interfaces';
     NgIf
   ]
 })
+
 export class MenuSemanalComponent implements OnInit {
   menuSemanal?: MenuSemanal;
   readonly daysOfWeek: String[] = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'];
@@ -27,6 +30,7 @@ export class MenuSemanalComponent implements OnInit {
   constructor(private http: HttpClient, private userService: UserService) { }
 
   ngOnInit() {
+    
     this.userService.currentUser.subscribe(user => {
       if (user && user.idUsuario !== undefined) {
         console.log('Usuario actual:', user);

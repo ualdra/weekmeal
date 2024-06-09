@@ -38,6 +38,19 @@ button:active {
   transform: translateY(4px); /* Mueve ligeramente el botón hacia abajo al hacer clic */
 }
 
+.comidas a {
+  color: #007bff; /* Establece el color principal del enlace */
+  text-decoration: none; /* Elimina el subrayado por defecto */
+  font-weight: bold; /* Hace el texto más grueso para destacar */
+  transition: color 0.3s ease-in-out; /* Transición suave para el color */
+}
+
+.comidas a:hover, .comidas a:focus {
+  color: #0056b3; /* Cambia el color al pasar el mouse o al enfocar */
+  text-decoration: underline; /* Añade un subrayado al pasar el mouse o enfocar */
+  outline: none; /* Elimina el contorno que aparece al enfocar en algunos navegadores */
+}
+
 
 .dia {
   flex: 1 0 12%; /* Flexibilidad con base mínima del 12% del contenedor */
