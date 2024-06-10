@@ -4,6 +4,20 @@
     align-items: center;
     justify-content: center;
     height: 88%;
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+
+.container.overflow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Asegura que el contenido comience desde arriba */
+    height: 88%;
+    overflow-y: auto; /* Permite el scroll vertical si es necesario */
+    padding-top: 2rem; /* Agrega un margen superior */
+    padding-bottom: 2rem; /* Agrega un margen superior */
+    box-sizing: border-box; /* Incluye el padding en el tamaño total del contenedor */
 }
 
 app-receta-info {
@@ -12,3 +26,15 @@ app-receta-info {
     justify-content: center;
     align-items: center; 
 }
+
+/* 
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; 
+    height: 88%;
+    overflow-y: auto; 
+    padding-top: 20px; 
+    box-sizing: border-box;
+} */
